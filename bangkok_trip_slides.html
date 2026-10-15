@@ -785,76 +785,78 @@ svg.leaflet-image-layer.leaflet-interactive path {
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased font-sans h-screen flex flex-col overflow-hidden select-none">
+<body class="bg-slate-100 text-slate-800 antialiased font-sans h-screen flex flex-col overflow-hidden">
 
   <!-- TOP APP BAR -->
-  <header class="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between shadow-sm z-30 shrink-0">
-    <div class="flex items-center space-x-3">
-      <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-sm text-base">
-        🗺️
-      </div>
-      <div>
-        <div class="flex items-center space-x-2">
-          <h1 class="text-sm md:text-base font-bold text-slate-900 tracking-tight">曼谷五天四夜・真實地圖、每日路線 ＆ 消費評分指南</h1>
-          <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">內建 Google Maps 評價按鈕 ＆ 預估消費</span>
+  <header class="bg-white border-b border-slate-200 px-3 py-2 md:px-4 md:py-2.5 flex flex-col md:flex-row md:items-center md:justify-between shadow-sm z-30 shrink-0 gap-1.5 md:gap-0">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-sm text-sm md:text-base shrink-0">
+          🗺️
         </div>
-        <p class="text-[11px] text-slate-500 flex items-center gap-2">
-          <span>📅 2026/11/13(五) - 11/17(二)</span> • 
-          <span>✈️ 泰航 TG633 / TG634</span> • 
-          <span>🏨 曼谷日航酒店 (BTS Thong Lo)</span>
-        </p>
+        <div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <h1 class="text-xs md:text-base font-bold text-slate-900 tracking-tight">曼谷五天四夜・動態路線指南</h1>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] md:text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Google Maps 評價 ＆ 預估消費</span>
+          </div>
+          <p class="text-[10px] md:text-[11px] text-slate-500 flex items-center gap-1.5">
+            <span>📅 11/13(五) - 11/17(二)</span> • 
+            <span>✈️ 泰航 TG633 / TG634</span> • 
+            <span>🏨 曼谷日航酒店</span>
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- DAY SELECTOR TABS -->
-    <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar">
-      <button onclick="selectDay('all')" id="tab-all" class="day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-blue-600 bg-blue-600 text-white shadow-sm">
+    <!-- DAY SELECTOR TABS (Smooth horizontal drag on mobile) -->
+    <div id="day-tabs-container" class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5 -mx-1 px-1">
+      <button onclick="selectDay('all')" id="tab-all" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-blue-600 bg-blue-600 text-white shadow-sm shrink-0">
         📍 全域總覽
       </button>
-      <button onclick="selectDay(1)" id="tab-1" class="day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700">
-        D1 抵達按摩
+      <button onclick="selectDay(1)" id="tab-1" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
+        D1 按摩微醺
       </button>
-      <button onclick="selectDay(2)" id="tab-2" class="day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700">
+      <button onclick="selectDay(2)" id="tab-2" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
         D2 水上大佛煙火宵夜
       </button>
-      <button onclick="selectDay(3)" id="tab-3" class="day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700">
+      <button onclick="selectDay(3)" id="tab-3" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
         D3 恰圖恰尋寶
       </button>
-      <button onclick="selectDay(4)" id="tab-4" class="day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700">
+      <button onclick="selectDay(4)" id="tab-4" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
         D4 嘟嘟車夜巡
       </button>
-      <button onclick="selectDay(5)" id="tab-5" class="day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700">
+      <button onclick="selectDay(5)" id="tab-5" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
         D5 芒果飯返台
       </button>
     </div>
   </header>
 
-  <!-- WORKSPACE SPLIT: LEFT REAL MAP + RIGHT ITINERARY ROUTE CARD -->
+  <!-- WORKSPACE: DESKTOP SPLIT VIEW / MOBILE SWITCHABLE VIEW -->
   <div class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
 
-    <!-- LEFT: REAL LEAFLET MAP -->
-    <div class="flex-1 relative bg-slate-200 h-[50vh] md:h-full">
+    <!-- MAP CONTAINER (Full height, toggleable on mobile, always visible on desktop) -->
+    <div id="map-container" class="flex-1 relative bg-slate-200 h-full w-full hidden md:block">
       <div id="map" class="w-full h-full z-10"></div>
 
       <!-- MAP FLOATING LEGEND & LANGUAGE SWITCHER -->
-      <div class="absolute top-3 left-3 z-20 bg-white/95 backdrop-blur border border-slate-300 rounded-lg p-2.5 shadow-md max-w-[290px]">
+      <div class="absolute top-3 left-3 z-20 bg-white/95 backdrop-blur border border-slate-300 rounded-lg p-2 md:p-2.5 shadow-md max-w-[210px] md:max-w-[290px]">
         <div class="text-[11px] font-bold text-slate-800 mb-1 flex items-center justify-between">
           <span id="legend-title">🗺️ 曼谷真實方位</span>
           <span id="route-dist" class="text-[10px] text-blue-600 font-mono font-bold">Google Maps</span>
         </div>
-        <div id="legend-desc" class="text-[10px] text-slate-600 leading-normal space-y-0.5 mb-2">
+        <div id="legend-desc" class="hidden md:block text-[10px] text-slate-600 leading-normal space-y-0.5 mb-2">
           <div>• 機場在曼谷【最東側】；昭披耶河與老街在【最西側】。</div>
           <div>• 日航酒店座落素坤逸心臟【通羅 (Thong Lo)】。</div>
         </div>
 
         <!-- LANGUAGE & LAYER SWITCH BUTTONS -->
-        <div class="flex items-center gap-1 pt-1.5 border-t border-slate-200 text-[10px]">
-          <span class="text-slate-400 font-medium mr-1">圖資語系:</span>
+        <div class="flex items-center gap-1 pt-1 md:pt-1.5 border-t border-slate-200 text-[10px]">
+          <span class="text-slate-400 font-medium mr-0.5">圖資:</span>
           <button onclick="switchMapLanguage('en')" id="btn-lang-en" class="px-2 py-0.5 rounded bg-blue-100 text-blue-700 font-bold border border-blue-300">
-            🔤 英文圖資
+            🔤 英文
           </button>
           <button onclick="switchMapLanguage('zh')" id="btn-lang-zh" class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium border border-slate-200 hover:bg-slate-200">
-            🇹🇼 中文圖資
+            🇹🇼 中文
           </button>
           <button onclick="switchMapLanguage('sat')" id="btn-lang-sat" class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium border border-slate-200 hover:bg-slate-200">
             🛰️ 衛星
@@ -863,35 +865,35 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
 
       <!-- MAP CONTROLS -->
-      <div class="absolute bottom-3 left-3 z-20 flex gap-1.5">
-        <button onclick="resetMapBounds()" class="px-2.5 py-1 bg-white/95 text-slate-700 text-xs font-semibold rounded-md border border-slate-300 shadow hover:bg-slate-50 transition">
+      <div class="absolute bottom-20 md:bottom-3 left-3 z-20 flex gap-1.5">
+        <button onclick="resetMapBounds()" class="px-2.5 py-1.5 bg-white/95 text-slate-700 text-xs font-semibold rounded-md border border-slate-300 shadow hover:bg-slate-50 transition">
           🔄 重置當前視野
         </button>
       </div>
     </div>
 
     <!-- RIGHT: ROUTE TIMELINE & DAY-BY-DAY GUIDE -->
-    <aside class="w-full md:w-[460px] bg-white border-l border-slate-200 flex flex-col overflow-hidden shrink-0 shadow-lg z-20">
+    <aside id="itinerary-aside" class="w-full md:w-[460px] bg-white border-l border-slate-200 flex flex-col h-full overflow-hidden shrink-0 shadow-lg z-20">
       
       <!-- DAY HEADER SUMMARY -->
-      <div class="p-4 border-b border-slate-200 bg-slate-50/80 shrink-0">
+      <div class="p-3.5 md:p-4 border-b border-slate-200 bg-slate-50/80 shrink-0">
         <div class="flex items-center justify-between mb-1">
           <span id="day-badge" class="px-2 py-0.5 rounded text-xs font-black bg-blue-600 text-white">全域概覽</span>
           <span id="day-date" class="text-xs font-semibold text-slate-500">2026/11/13 - 11/17</span>
         </div>
-        <h2 id="day-main-title" class="text-base font-bold text-slate-900">曼谷五日地理坐標與三男子行軍地圖</h2>
+        <h2 id="day-main-title" class="text-sm md:text-base font-bold text-slate-900">曼谷五日地理坐標與三男子行軍地圖</h2>
         <p id="day-main-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">
           點擊下方卡片可直接在地圖聚焦，亦可點擊【📍 Google Maps】查看真實評價與照片！
         </p>
       </div>
 
-      <!-- ROUTE TIMELINE LIST (SCROLLABLE) -->
-      <div id="route-list" class="flex-1 overflow-y-auto p-4 space-y-3.5 no-scrollbar">
+      <!-- ROUTE TIMELINE LIST (SCROLLABLE WITH EXTRA BOTTOM PADDING FOR MOBILE PILL) -->
+      <div id="route-list" class="flex-1 overflow-y-auto p-3.5 md:p-4 space-y-3 pb-24 md:pb-4 no-scrollbar">
         <!-- Injected via JavaScript -->
       </div>
 
-      <!-- BOTTOM ACTION FOOTER -->
-      <div class="p-3 border-t border-slate-200 bg-white flex items-center justify-between text-xs text-slate-500 shrink-0">
+      <!-- BOTTOM ACTION FOOTER (Desktop Keyboard / Next Day bar) -->
+      <div class="p-3 border-t border-slate-200 bg-white hidden md:flex items-center justify-between text-xs text-slate-500 shrink-0">
         <button onclick="prevDay()" class="px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100 font-medium transition active:scale-95">
           ◀ 上一天
         </button>
@@ -902,6 +904,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
     </aside>
 
+  </div>
+
+  <!-- FLOATING MOBILE BOTTOM SWITCHER PILL (Apple/Google Maps style) -->
+  <div class="md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex items-center bg-slate-900/90 text-white backdrop-blur-md p-1 rounded-full shadow-2xl border border-slate-700/60">
+    <button onclick="setMobileView('list')" id="m-btn-list" class="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition bg-blue-600 text-white shadow">
+      📋 行程清單
+    </button>
+    <button onclick="setMobileView('map')" id="m-btn-map" class="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition text-slate-300 hover:text-white">
+      🗺️ 全景地圖
+    </button>
   </div>
 
   <!-- JAVASCRIPT LOGIC & MAP DATA -->
@@ -1399,6 +1411,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
         activeTab.className = 'day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-blue-600 bg-blue-600 text-white shadow-sm';
       }
 
+      // Auto scroll active tab into view on mobile
+      if (activeTab && window.innerWidth < 768) {
+        activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
       // Update Sidebar Info
       document.getElementById('day-badge').innerText = dayKey === 'all' ? '全域概覽' : `DAY ${dayKey}`;
       document.getElementById('day-badge').style.backgroundColor = data.color;
@@ -1436,8 +1453,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div>
             <div class="flex items-center justify-between text-xs font-mono font-bold text-slate-500 mb-1">
               <span class="text-blue-600">${note.time}</span>
-              <button onclick="focusLocation('${note.loc}')" class="text-[10px] bg-slate-200 hover:bg-slate-300 px-2 py-0.5 rounded text-slate-700 transition">
-                🎯 地圖聚焦
+              <button onclick="focusLocation('${note.loc}')" class="text-[11px] font-semibold bg-blue-100 hover:bg-blue-200 text-blue-800 px-2.5 py-1 rounded-md transition flex items-center gap-1">
+                🎯 看地圖位置
               </button>
             </div>
             <h4 class="text-sm font-bold text-slate-900">${note.title}</h4>
@@ -1488,17 +1505,56 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
       // Fit Bounds smoothly
       if (boundsCoords.length > 0) {
-        map.fitBounds(boundsCoords, { padding: [50, 50], maxZoom: 14 });
+        map.fitBounds(boundsCoords, { padding: [40, 40], maxZoom: 14 });
+      }
+    }
+
+    // Mobile View Toggle ('list' vs 'map')
+    let mobileView = 'list';
+    function setMobileView(view) {
+      mobileView = view;
+      const mapContainer = document.getElementById('map-container');
+      const asideContainer = document.getElementById('itinerary-aside');
+      const btnList = document.getElementById('m-btn-list');
+      const btnMap = document.getElementById('m-btn-map');
+
+      if (view === 'list') {
+        mapContainer.classList.add('hidden');
+        mapContainer.classList.remove('block');
+        asideContainer.classList.remove('hidden');
+        asideContainer.classList.add('flex');
+        
+        btnList.className = 'flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition bg-blue-600 text-white shadow';
+        btnMap.className = 'flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition text-slate-300 hover:text-white';
+      } else {
+        asideContainer.classList.add('hidden');
+        asideContainer.classList.remove('flex');
+        mapContainer.classList.remove('hidden');
+        mapContainer.classList.add('block');
+
+        btnMap.className = 'flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition bg-blue-600 text-white shadow';
+        btnList.className = 'flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition text-slate-300 hover:text-white';
+
+        setTimeout(() => {
+          map.invalidateSize();
+          resetMapBounds();
+        }, 150);
       }
     }
 
     function focusLocation(locKey) {
       const loc = LOCATIONS[locKey];
       if (!loc) return;
-      map.flyTo([loc.lat, loc.lng], 15, { duration: 0.8 });
-      if (currentMarkers[locKey]) {
-        currentMarkers[locKey].openPopup();
+      if (window.innerWidth < 768) {
+        setMobileView('map');
       }
+      setTimeout(() => {
+        map.invalidateSize();
+        map.flyTo([loc.lat, loc.lng], 15, { duration: 0.8 });
+        if (currentMarkers[locKey]) {
+          currentMarkers[locKey].openPopup();
+        }
+      }, window.innerWidth < 768 ? 200 : 50);
     }
 
     function resetMapBounds() {
@@ -1523,6 +1579,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
       else if (e.key === 'ArrowLeft') prevDay();
       else if (['0','1','2','3','4','5'].includes(e.key)) {
         selectDay(e.key === '0' ? 'all' : parseInt(e.key));
+      }
+    });
+
+    // Window Resize Handling
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        document.getElementById('map-container').classList.remove('hidden');
+        document.getElementById('itinerary-aside').classList.remove('hidden');
+        document.getElementById('itinerary-aside').classList.add('flex');
+        map.invalidateSize();
+      } else {
+        setMobileView(mobileView);
       }
     });
 
