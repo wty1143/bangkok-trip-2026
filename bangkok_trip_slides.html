@@ -780,6 +780,67 @@ svg.leaflet-image-layer.leaflet-interactive path {
       color: #ffffff !important;
       box-shadow: 0 2px 6px rgba(255, 91, 0, 0.4) !important;
     }
+
+    /* Transit Connector Card & Timeline Track */
+    .timeline-connector {
+      position: relative;
+      margin-left: 14px;
+      padding-left: 18px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      border-left: 2.5px dashed #cbd5e1;
+      transition: all 0.2s ease;
+    }
+    .timeline-connector.bts-line {
+      border-left: 3px solid #16a34a;
+    }
+    .timeline-connector.mrt-line {
+      border-left: 3px solid #2563eb;
+    }
+    .timeline-connector.boat-line {
+      border-left: 3px solid #0284c7;
+    }
+    .transit-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 9px 12px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      position: relative;
+    }
+    .transit-card:hover, .transit-card.active-transit {
+      border-color: #2563eb;
+      background: #eff6ff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.14);
+      transform: translateX(2px);
+    }
+    .station-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 800;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .bts-badge { background-color: #16a34a; color: #ffffff; }
+    .mrt-badge { background-color: #2563eb; color: #ffffff; }
+    .grab-badge { background-color: #059669; color: #ffffff; }
+    .walk-badge { background-color: #475569; color: #ffffff; }
+    .boat-badge { background-color: #0284c7; color: #ffffff; }
+    .exit-badge {
+      background-color: #fef08a;
+      color: #854d0e;
+      border: 1px solid #fde047;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
     /* Hide scrollbars */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -797,7 +858,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div>
           <div class="flex items-center gap-1.5 flex-wrap">
             <h1 class="text-xs md:text-base font-bold text-slate-900 tracking-tight">曼谷五天四夜・動態路線指南</h1>
-            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] md:text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Google Maps 評價 ＆ 預估消費</span>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] md:text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Google Maps 評價 ＆ 實戰交通導航</span>
           </div>
           <p class="text-[10px] md:text-[11px] text-slate-500 flex items-center gap-1.5">
             <span>📅 11/13(五) - 11/17(二)</span> • 
@@ -873,7 +934,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
 
     <!-- RIGHT: ROUTE TIMELINE & DAY-BY-DAY GUIDE -->
-    <aside id="itinerary-aside" class="w-full md:w-[460px] bg-white border-l border-slate-200 flex flex-col h-full overflow-hidden shrink-0 shadow-lg z-20">
+    <aside id="itinerary-aside" class="w-full md:w-[470px] bg-white border-l border-slate-200 flex flex-col h-full overflow-hidden shrink-0 shadow-lg z-20">
       
       <!-- DAY HEADER SUMMARY -->
       <div class="p-3.5 md:p-4 border-b border-slate-200 bg-slate-50/80 shrink-0">
@@ -888,7 +949,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
 
       <!-- ROUTE TIMELINE LIST (SCROLLABLE WITH EXTRA BOTTOM PADDING FOR MOBILE PILL) -->
-      <div id="route-list" class="flex-1 overflow-y-auto p-3.5 md:p-4 space-y-3 pb-24 md:pb-4 no-scrollbar">
+      <div id="route-list" class="flex-1 overflow-y-auto p-3.5 md:p-4 space-y-2.5 pb-24 md:pb-4 no-scrollbar">
         <!-- Injected via JavaScript -->
       </div>
 
@@ -961,7 +1022,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         icon: '✈️',
         color: '#f59e0b',
         tag: '東側空中門戶',
-        price: 'Grab/機場接送約 600-800 銖/車',
+        price: 'Grab/機場接送約 500-650 銖/車',
         desc: '位於曼谷市區東側約 26 公里。泰航 TG 633 降落（16:50）與 TG 634 起飛（12:40）航廈。',
         timeNote: '車程約 35-40 分',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Suvarnabhumi+Airport'
@@ -1177,7 +1238,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       }
     };
 
-    // 2. DAILY ROUTES DEFINITION
+    // 2. DAILY ROUTES DEFINITION WITH FULL TRANSIT CONNECTORS
     const DAY_ROUTES = {
       'all': {
         title: '📍 曼谷五日全域相對位置總覽',
@@ -1205,10 +1266,102 @@ svg.leaflet-image-layer.leaflet-interactive path {
         stops: ['bkk', 'nikko', 'relax', 'supanniga', 'lockerroom'],
         path: ['bkk', 'nikko', 'supanniga', 'lockerroom'],
         notes: [
-          { time: '16:50 - 18:30', title: '❶ 蘇凡納布機場 ➔ 直奔通羅日航酒店', loc: 'bkk', text: '出關領行李後，三人直接叫 Grab XL 或 Bolt 前往日航酒店 Check-in。（車程約 35-40 分鐘）' },
-          { time: '19:00 - 21:00', title: '❷ 飯店 2 樓：Let\'s Relax 泰式草本按摩', loc: 'relax', text: '搭電梯直達 2 樓享受 60-90 分鐘道地泰式古法按摩與草本熱敷，瞬間卸除飛行疲勞！' },
-          { time: '21:30 - 23:00', title: '❸ 步行 7 分鐘：Supanniga 享用米其林晚餐', loc: 'supanniga', text: '精緻傳統泰東菜（馬沙曼牛肉咖哩、脆皮豬肉末配特調雞尾酒）。' },
-          { time: '23:00 - 深夜', title: '❹ 步行直達：Find The Locker Room 亞洲 50 大密室酒吧', loc: 'lockerroom', text: '就在通羅 10 巷！拉開高中生生鏽置物櫃暗門，品嚐亞洲 50 大世界級神仙調酒！微醺散步 8 分鐘即可回日航睡好覺。' }
+          {
+            time: '16:50 - 18:30',
+            title: '❶ 蘇凡納布機場 (BKK) 抵達 ➔ 前往飯店',
+            loc: 'bkk',
+            text: '出關領取行李後，三人直接叫車前往日航酒店 Check-in 入住。',
+            transitToNext: {
+              mode: 'grab',
+              badgeText: '🚕 Grab / 機場計程車',
+              fromTitle: '蘇凡納布機場 1F Grab 區',
+              toTitle: '曼谷日航酒店大門',
+              duration: '35–45 分鐘',
+              cost: '約 500–650 銖/車',
+              direction: '走高速公路直達通羅',
+              instructions: '領完行李搭手扶梯至 1 樓 4 號門外 Grab Pickup 區叫車（3人+大行李建議選 GrabCar SUV），走高架收費道路直達日航酒店大門。',
+              waypoints: [[13.6900, 100.7501], [13.7220, 100.7020], [13.7380, 100.6450], [13.7430, 100.6050], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.6900,100.7501&destination=13.7272,100.5794&travelmode=driving'
+            }
+          },
+          {
+            time: '18:30 - 19:00',
+            title: '❷ 曼谷日航酒店：Check-in 放行李',
+            loc: 'nikko',
+            text: '三人至大廳辦理入住手續，放妥行李並稍微梳洗後，直奔 2 樓按摩舒壓。',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🛗 飯店電梯直達',
+              fromTitle: '日航酒店客房',
+              toTitle: 'Let\'s Relax (日航 2F)',
+              duration: '1 分鐘',
+              cost: '0 銖',
+              direction: '電梯下 2 樓商場區',
+              instructions: '搭乘客房電梯直下 2 樓 Ginza Thonglor 商場區，出電梯右轉即達 Let\'s Relax 櫃檯。',
+              waypoints: [[13.7272, 100.5794], [13.7274, 100.5796]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7274,100.5796&travelmode=walking'
+            }
+          },
+          {
+            time: '19:00 - 21:00',
+            title: '❸ 飯店 2 樓：Let\'s Relax 泰式草本按摩',
+            loc: 'relax',
+            text: '享受 60-90 分鐘道地泰式傳統古法按摩與草本熱敷，瞬間卸除飛行疲勞！',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🚶 步行導航',
+              fromTitle: '曼谷日航酒店',
+              toTitle: 'Supanniga 泰菜',
+              duration: '7 分鐘 (550m)',
+              cost: '0 銖',
+              direction: '沿通羅大道 (Soi 55) 往北',
+              instructions: '出日航大門左轉，沿通羅大道 (Sukhumvit Soi 55) 往北直走，過通羅 6 巷後在右手邊。',
+              waypoints: [[13.7272, 100.5794], [13.7290, 100.5805], [13.7310, 100.5815]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7310,100.5815&travelmode=walking'
+            }
+          },
+          {
+            time: '21:30 - 23:00',
+            title: '❹ Supanniga 享用米其林泰東晚餐',
+            loc: 'supanniga',
+            text: '精緻傳統泰東菜（馬沙曼咖哩牛肉、脆皮豬肉末配特調雞尾酒）。',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🚶 步行導航',
+              fromTitle: 'Supanniga 泰菜',
+              toTitle: 'Find The Locker Room',
+              duration: '3 分鐘 (250m)',
+              cost: '0 銖',
+              direction: '通羅大道轉 10 巷',
+              instructions: '繼續沿通羅大道往北走 200m，於通羅 10 巷 (Soi 10) 右轉進入 50m 即達鐵捲置物櫃暗門。',
+              waypoints: [[13.7310, 100.5815], [13.7325, 100.5822], [13.7328, 100.5826]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7310,100.5815&destination=13.7328,100.5826&travelmode=walking'
+            }
+          },
+          {
+            time: '23:00 - 深夜',
+            title: '❺ Find The Locker Room 亞洲 50 大密室酒吧',
+            loc: 'lockerroom',
+            text: '就在通羅 10 巷！拉開高中生生鏽置物櫃暗門，品嚐亞洲 50 大世界級神仙調酒！',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🚶 散步回房',
+              fromTitle: 'Find The Locker Room',
+              toTitle: '曼谷日航酒店',
+              duration: '8 分鐘 (800m)',
+              cost: '0 銖',
+              direction: '沿通羅大道往南直行',
+              instructions: '出 10 巷左轉，沿通羅大道 (Soi 55) 往南散步回 BTS Thong Lo 方向，直達日航飯店大廳。',
+              waypoints: [[13.7328, 100.5826], [13.7325, 100.5822], [13.7290, 100.5805], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7328,100.5826&destination=13.7272,100.5794&travelmode=walking'
+            }
+          },
+          {
+            time: '深夜',
+            title: '❻ 返回曼谷日航酒店 舒活入眠',
+            loc: 'nikko',
+            text: '沿通羅大道散步 8 分鐘返回日航酒店大廳，享受舒服的靜音客房與深浴缸，為週末蓄積飽滿體力！'
+          }
         ]
       },
       2: {
@@ -1219,12 +1372,126 @@ svg.leaflet-image-layer.leaflet-interactive path {
         stops: ['nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong'],
         path: ['nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong', 'nikko'],
         notes: [
-          { time: '10:00 - 11:30', title: '❶ BTS 直達 5 站：愛侶灣四面佛虔誠還願', loc: 'erawan', text: '享用日航奢華朝食後，搭 BTS 直達 Chit Lom 站。向四面佛稟報還願，現場預約官方還願舞團獻舞，圓滿心願。' },
-          { time: '11:45 - 13:00', title: '❷ 奇隆周邊散步早午餐：米其林水門雞飯', loc: 'erawan', text: '還願後步行至鄰近水門享用米其林必比登「紅大哥水門雞飯」配冰泰奶，隨後搭車前往昭披耶河老街碼頭。' },
-          { time: '13:30 - 15:30', title: '❸ 私人復古長尾船探險：吞武里運河 ＆ 水上巨佛', loc: 'longtail', text: '包下專屬木造長尾船（7-11 自帶冰啤酒上船！）。穿梭東方威尼斯百年水上木屋、看水巨蜥，水道轉角驚喜瞻仰 20 層樓高純金「水門寺巨佛」！' },
-          { time: '15:30 - 17:30', title: '❹ 長尾船直達老街碼頭：洪成公老宅河景咖啡', loc: 'talatnoi', text: '船夫直接在老街碼頭讓你們下船。走進百年老宅【洪成公】，坐在河畔大榕樹下喝冰手沖放空，感受老曼谷慢時光。' },
-          { time: '18:00 - 19:30', title: '❺ 步行至紀念橋 / 天空公園看河畔煙火', loc: 'fireworks', text: '沿河岸散步至紀念橋，欣賞 3D 光雕投影與週末夜間壓軸的璀璨水上煙火秀！' },
-          { time: '20:00 - 23:00', title: '❻ 叫車 10 分鐘直奔：班塔通路大學生宵夜街', loc: 'banthatthong', text: '看完煙火直衝曼谷第一宵夜街！排米其林 Jeh O Chula、吃爆漿炭烤吐司、泰式脆皮炸油條配斑蘭醬，熱鬧非凡！吃完 BTS 直達回通羅日航。' }
+          {
+            time: '09:30 - 10:00',
+            title: '❶ 曼谷日航酒店：奢華朝食後出發',
+            loc: 'nikko',
+            text: '享用日航天花板等級的日料朝食，出飯店步行 3 分鐘至 BTS Thong Lo 站搭車。',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (5站)',
+              fromTitle: 'BTS Thong Lo (E6)',
+              toTitle: 'BTS Chit Lom (E1)',
+              fromStation: { name: 'BTS Thong Lo (E6)', exit: '3號入口進站' },
+              toStation: { name: 'BTS Chit Lom (E1)', exit: '2號出口' },
+              duration: '11 分鐘 (5站)',
+              cost: '35 銖/人',
+              direction: '往 Khu Khot (N24) 方向',
+              instructions: '• 上車：BTS Thong Lo (E6) 3號入口進站<br>• 月台方向：往 Khu Khot (N24) 方向<br>• 途經：5 站 (E6➔E5➔E4➔E3➔E2➔E1)<br>• 下車：BTS Chit Lom (E1)<br>• 出口：2 號出口接空橋步行 2 分鐘下樓即達四面佛',
+              waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7303, 100.5698], [13.7370, 100.5604], [13.7401, 100.5552], [13.7431, 100.5489], [13.7441, 100.5430], [13.7443, 100.5404]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7443,100.5404&travelmode=transit'
+            }
+          },
+          {
+            time: '10:00 - 12:30',
+            title: '❷ 愛侶灣四面佛虔誠還願 ＆ 水門雞飯早午餐',
+            loc: 'erawan',
+            text: '向四面佛稟報還願，現場預約官方還願舞團獻舞，圓滿心願。還願後可步行順道品嚐米其林必比登「紅大哥水門雞飯」配冰泰奶。',
+            transitToNext: {
+              mode: 'grab',
+              badgeText: '🚕 Grab 直達碼頭',
+              fromTitle: '愛侶灣四面佛 / 水門',
+              toTitle: 'River City Pier N3 碼頭',
+              duration: '20 分鐘',
+              cost: '約 130–160 銖/車',
+              direction: '走拍喃四路直達河岸包船處',
+              instructions: '• Grab 定位：River City Bangkok (Si Phraya Pier N3 碼頭)，三人吹冷氣直達河岸包船處。<br>• BTS 備案：E1 Chit Lom 搭至 Siam 轉深綠線至 S6 Saphan Taksin (2號出口碼頭)。',
+              waypoints: [[13.7443, 100.5404], [13.7350, 100.5300], [13.7290, 100.5200], [13.7285, 100.5135]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7443,100.5404&destination=13.7285,100.5135&travelmode=driving'
+            }
+          },
+          {
+            time: '13:30 - 15:30',
+            title: '❸ 私人復古長尾船探險：吞武里運河 ＆ 水上巨佛',
+            loc: 'longtail',
+            text: '包下專屬木造長尾船（7-11 自帶冰啤酒上船！）。穿梭百年水上木屋、看水巨蜥，水道轉角驚喜瞻仰 20 層樓高純金「水門寺巨佛」！',
+            transitToNext: {
+              mode: 'boat',
+              badgeText: '🚤 私人長尾船航線',
+              fromTitle: '水上大佛秘境',
+              toTitle: '噠叻仔老街碼頭',
+              duration: '長尾船直達 (含在包船內)',
+              cost: '包船約 1,500–2,000 銖/船',
+              direction: '橫渡昭披耶河停靠噠叻仔',
+              instructions: '• 航線：瞻仰水門寺純金巨佛後，船伕沿大運河返航橫渡昭披耶河，直接停靠在噠叻仔【洪成公咖啡】旁的私人老街碼頭讓你們優雅下船！',
+              waypoints: [[13.7225, 100.4705], [13.7240, 100.4850], [13.7280, 100.5050], [13.7344, 100.5140]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7225,100.4705&destination=13.7344,100.5140&travelmode=transit'
+            }
+          },
+          {
+            time: '15:30 - 17:30',
+            title: '❹ 噠叻仔文青老街：洪成公老宅河景咖啡',
+            loc: 'talatnoi',
+            text: '船夫直接在老街碼頭讓你們下船。走進百年老宅【洪成公】，坐在河畔大榕樹下喝冰手沖放空，感受老曼谷慢時光。',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🛺 嘟嘟車 / 河岸散步',
+              fromTitle: '噠叻仔老街 (洪成公)',
+              toTitle: '紀念橋天空公園 (煙火)',
+              duration: '嘟嘟車 5分 / 步行 18分',
+              cost: '嘟嘟車 80 銖 / 步行 0 銖',
+              direction: '沿昭披耶河向西北方向',
+              instructions: '出老街巷口攔台嘟嘟車（或沿昭披耶河岸向西北散步），直達跨河 Chao Phraya Sky Park (紀念橋天空公園) 入口。',
+              waypoints: [[13.7344, 100.5140], [13.7370, 100.5080], [13.7385, 100.5030], [13.7397, 100.4985]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7344,100.5140&destination=13.7397,100.4985&travelmode=walking'
+            }
+          },
+          {
+            time: '18:00 - 19:30',
+            title: '❺ 紀念橋天空公園：湄南河燈光節煙火',
+            loc: 'fireworks',
+            text: '沿河岸散步至紀念橋，欣賞 3D 光雕投影與週末夜間壓軸的璀璨水上煙火秀！',
+            transitToNext: {
+              mode: 'mrt',
+              badgeText: '🚇 MRT 藍線 (不塞車神招)',
+              fromTitle: 'MRT Sam Yot (BL30)',
+              toTitle: '班塔通路宵夜街',
+              fromStation: { name: 'MRT Sam Yot (BL30)', exit: '步行 4 分鐘進站' },
+              toStation: { name: 'MRT Hua Lamphong (BL28)', exit: '3號出口' },
+              duration: '10 分鐘',
+              cost: 'MRT 19 銖 / Grab 100 銖',
+              direction: '往 Hua Lamphong 方向 (2站)',
+              instructions: '• MRT 不塞車神招：紀念橋步行 4 分鐘進 MRT Sam Yot (BL30 三耀站) ➔ 往 Hua Lamphong 方向搭 2 站 ➔ MRT Hua Lamphong (BL28) 3 號出口轉車 3 分鐘即達宵夜街！<br>• Grab 直達：往北僅 3.5km，定位 Jeh O Chula 或 Chula Soi 16。',
+              waypoints: [[13.7397, 100.4985], [13.7471, 100.5034], [13.7430, 100.5097], [13.7371, 100.5173], [13.7423, 100.5238]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7397,100.4985&destination=13.7423,100.5238&travelmode=transit'
+            }
+          },
+          {
+            time: '20:00 - 23:00',
+            title: '❻ 班塔通路大學生宵夜街 (Ban That Thong)',
+            loc: 'banthatthong',
+            text: '看完煙火直衝曼谷第一宵夜街！排米其林 Jeh O Chula、吃爆漿炭烤吐司、泰式脆皮炸油條配斑蘭醬，熱鬧非凡！',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 / 🚕 Grab',
+              fromTitle: 'BTS Siam (CEN) / W1',
+              toTitle: 'BTS Thong Lo (E6)',
+              fromStation: { name: 'BTS Siam (CEN)', exit: '或 National Stadium (W1)' },
+              toStation: { name: 'BTS Thong Lo (E6)', exit: '3號出口' },
+              duration: '15–18 分鐘',
+              cost: 'BTS 47 銖 / Grab 150 銖',
+              direction: '往 Kheha (E23) 方向 (6站)',
+              instructions: '• BTS 方案：散步至北端 BTS National Stadium (W1) 或 BTS Siam (CEN) ➔ 搭淺綠線往 Kheha (E23) 方向（6站）➔ BTS Thong Lo (E6) 3 號出口回日航。<br>• Grab 方案：宵夜後走拉瑪四路直達日航大門。',
+              waypoints: [[13.7423, 100.5238], [13.7456, 100.5342], [13.7441, 100.5430], [13.7431, 100.5489], [13.7401, 100.5552], [13.7370, 100.5604], [13.7303, 100.5698], [13.7242, 100.5786], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7423,100.5238&destination=13.7272,100.5794&travelmode=transit'
+            }
+          },
+          {
+            time: '深夜',
+            title: '❼ 返回曼谷日航酒店 休息充電',
+            loc: 'nikko',
+            text: '宵夜滿載而歸，搭 BTS 直達回通羅日航酒店，舒緩雙腿、洗熱水澡好眠。'
+          }
         ]
       },
       3: {
@@ -1233,12 +1500,112 @@ svg.leaflet-image-layer.leaflet-interactive path {
         desc: '路線：日航早餐 ➔ 恰圖恰週末市集淘寶 ➔ 喬德城堡夜市 ➔ T-One 46F 高空酒吧 ➔ [可選] Find The Locker Room 續攤',
         color: '#2563eb',
         stops: ['nikko', 'chatuchak', 'jodd', 'tone', 'lockerroom'],
-        path: ['nikko', 'chatuchak', 'jodd', 'tone', 'lockerroom'],
+        path: ['nikko', 'chatuchak', 'nikko', 'jodd', 'tone'],
         notes: [
-          { time: '11:00 - 15:00', title: '❶ BTS 直達恰圖恰週末市集 (Mo Chit 站)', loc: 'chatuchak', text: '日航豐盛早餐後搭綠線北上直達。制霸全球最大戶外市集，淘選古著花襯衫、手工皮件與椰子冰淇淋。' },
-          { time: '15:30 - 17:30', title: '❷ 回飯店放戰利品 / 日航高空泳池放空', loc: 'nikko', text: '下午逛累回日航飯店放戰利品，在飯店泳池游泳放鬆充電，避開午後悶熱。' },
-          { time: '18:30 - 21:30', title: '❸ 喬德城堡夜市嗑酸辣火山排骨', loc: 'jodd', text: '在巨大歐風城堡前合力挑戰酸辣巨無霸火山排骨配冰啤酒，感受滿滿年輕夜市活力。' },
-          { time: '22:00 - 深夜', title: '❹ 回通羅 T-One 46F 看百萬夜景 ＆ 密室酒吧', loc: 'tone', text: '回到日航飯店門口的 T-One 酒吧俯瞰曼谷百萬天際線！若意猶未盡，還可步行至 Find The Locker Room 喝私房調酒。' }
+          {
+            time: '11:00 - 11:30',
+            title: '❶ 曼谷日航酒店：活力晨起出發',
+            loc: 'nikko',
+            text: '悠閒享用日航天花板日式早餐後，步行 3 分鐘至 BTS Thong Lo 站搭車。',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (免換車直達)',
+              fromTitle: 'BTS Thong Lo (E6)',
+              toTitle: 'BTS Mo Chit (N8)',
+              fromStation: { name: 'BTS Thong Lo (E6)', exit: '3號入口進站' },
+              toStation: { name: 'BTS Mo Chit (N8)', exit: '1號出口' },
+              duration: '28 分鐘 (14站)',
+              cost: '62 銖/人',
+              direction: '往 Khu Khot (N24) 方向 (一車到底)',
+              instructions: '• 上車：BTS Thong Lo (E6 通羅站)<br>• 月台方向：往 Khu Khot (N24) 方向（一車到底免換線）<br>• 途經：14 站直達<br>• 下車：BTS Mo Chit (N8 蒙奇站)<br>• 出口：1 號出口下樓右轉直入市集大門',
+              waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7370, 100.5604], [13.7456, 100.5342], [13.7610, 100.5370], [13.7750, 100.5420], [13.8024, 100.5537], [13.7999, 100.5502]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7999,100.5502&travelmode=transit'
+            }
+          },
+          {
+            time: '11:30 - 15:30',
+            title: '❷ 恰圖恰週末市集：全球最大市集尋寶',
+            loc: 'chatuchak',
+            text: '制霸全球最大戶外市集，淘選古著花襯衫、手工皮件、潮牌文創、喝泰奶與椰子冰淇淋。',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (回飯店午休)',
+              fromTitle: 'BTS Mo Chit (N8)',
+              toTitle: 'BTS Thong Lo (E6)',
+              fromStation: { name: 'BTS Mo Chit (N8)', exit: '1號入口' },
+              toStation: { name: 'BTS Thong Lo (E6)', exit: '3號出口 (電扶梯)' },
+              duration: '28 分鐘 (14站)',
+              cost: '62 銖/人',
+              direction: '往 Kheha (E23) 方向',
+              instructions: '• 上車：BTS Mo Chit (N8 蒙奇站)<br>• 月台方向：往 Kheha (E23) 方向<br>• 下車站：BTS Thong Lo (E6 通羅站) 3 號出口（有電扶梯）下樓步行 3 分鐘回飯店放戰利品＆高空泳池放空',
+              waypoints: [[13.7999, 100.5502], [13.8024, 100.5537], [13.7750, 100.5420], [13.7610, 100.5370], [13.7456, 100.5342], [13.7370, 100.5604], [13.7242, 100.5786], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7999,100.5502&destination=13.7272,100.5794&travelmode=transit'
+            }
+          },
+          {
+            time: '15:30 - 17:30',
+            title: '❸ 回飯店放戰利品 ＆ 日航高空泳池充電',
+            loc: 'nikko',
+            text: '下午逛累回日航飯店放戰利品，在飯店泳池游泳放鬆充電，避開午後悶熱。',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (免換車直達)',
+              fromTitle: 'BTS Thong Lo (E6)',
+              toTitle: '喬德城堡夜市',
+              fromStation: { name: 'BTS Thong Lo (E6)', exit: '3號入口' },
+              toStation: { name: 'BTS Phahonyothin 24 (N10)', exit: '2號出口' },
+              duration: '32 分鐘 (16站)',
+              cost: '62 銖/人',
+              direction: '往 Khu Khot (N24) 方向',
+              instructions: '• 上車：BTS Thong Lo (E6 通羅站)<br>• 月台方向：往 Khu Khot (N24) 方向<br>• 下車站：坐 16 站至 BTS Phahonyothin 24 (N10 帕鳳裕庭24站)<br>• 出口：2 號出口下樓步行 4 分鐘即見歐風城堡夜市大門',
+              waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7456, 100.5342], [13.8024, 100.5537], [13.8130, 100.5612], [13.8236, 100.5658], [13.8188, 100.5644]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.8188,100.5644&travelmode=transit'
+            }
+          },
+          {
+            time: '18:30 - 21:30',
+            title: '❹ 喬德城堡夜市嗑酸辣火山排骨',
+            loc: 'jodd',
+            text: '在巨大歐風城堡前合力挑戰酸辣巨無霸火山排骨配冰啤酒，感受滿滿年輕夜市活力。',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (空橋直通酒吧)',
+              fromTitle: 'BTS Phahonyothin 24 (N10)',
+              toTitle: 'T-One 46F 高空酒吧',
+              fromStation: { name: 'BTS Phahonyothin 24 (N10)', exit: '進站' },
+              toStation: { name: 'BTS Thong Lo (E6)', exit: '4號出口空橋直達' },
+              duration: '32 分鐘 (16站)',
+              cost: '62 銖/人',
+              direction: '往 Kheha (E23) 方向',
+              instructions: '• 上車：BTS Phahonyothin 24 (N10)<br>• 月台方向：往 Kheha (E23) 方向<br>• 下車站：BTS Thong Lo (E6 通羅站)<br>• 出口：4 號出口空橋直接連通 T-One 大樓上 46F！喝完步行 3 分鐘回日航。',
+              waypoints: [[13.8188, 100.5644], [13.8236, 100.5658], [13.8024, 100.5537], [13.7456, 100.5342], [13.7242, 100.5786], [13.7238, 100.5798]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.8188,100.5644&destination=13.7238,100.5798&travelmode=transit'
+            }
+          },
+          {
+            time: '22:00 - 深夜',
+            title: '❺ 通羅 T-One 46F 看百萬夜景 ＆ 密室酒吧',
+            loc: 'tone',
+            text: '回到日航飯店門口的 T-One 酒吧俯瞰曼谷百萬天際線！若意猶未盡，還可步行至 Find The Locker Room 喝私房調酒。',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🚶 步行回房',
+              fromTitle: 'T-One 大樓',
+              toTitle: '曼谷日航酒店',
+              duration: '3 分鐘 (250m)',
+              cost: '0 銖',
+              direction: '沿通羅路向北直走',
+              instructions: '下樓後沿通羅 55 巷向北走 200m，過馬路即達日航酒店大門。',
+              waypoints: [[13.7238, 100.5798], [13.7255, 100.5795], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7238,100.5798&destination=13.7272,100.5794&travelmode=walking'
+            }
+          },
+          {
+            time: '深夜',
+            title: '❻ 返回曼谷日航酒店 (或通羅巷內續攤)',
+            loc: 'nikko',
+            text: '微醺散步回飯店；若精力旺盛，還可步行至通羅 10 巷 Find The Locker Room 喝隱藏特調。'
+          }
         ]
       },
       4: {
@@ -1249,9 +1616,88 @@ svg.leaflet-image-layer.leaflet-interactive path {
         stops: ['nikko', 'emsphere', 'herehai', 'tuktuk'],
         path: ['nikko', 'emsphere', 'herehai', 'tuktuk', 'nikko'],
         notes: [
-          { time: '12:30 - 15:30', title: '❶ BTS 1 站直達：EMSPHERE 潮流購物城', loc: 'emsphere', text: '曼谷最新旗艦地標！男生最愛逛的超跑概念館、潮流球鞋選物店與奢華室內美食街。' },
-          { time: '16:00 - 17:30', title: '❷ Here Hai 喜愛海鮮：米其林痛風蟹肉餐', loc: 'herehai', text: '回飯店隔壁 Ekkamai 巷，避開排隊潮！必點鋪滿金黃大塊蟹肉的「巨無霸蟹肉炒飯」與「黑椒蒜炒皮皮蝦」。' },
-          { time: '19:00 - 23:00', title: '❸ 尊榮包車：米其林嘟嘟車老城狂飆', loc: 'tuktuk', text: '三人包一台專屬改裝嘟嘟車！免排隊狂刷【乃鴻炒河粉】、【鬼門 Pad Thai 蛋包河粉】與【胡椒豬肚湯】，夜訪無人臥佛寺震撼夜景。' }
+          {
+            time: '12:00 - 12:30',
+            title: '❶ 曼谷日航酒店：時尚午後出發',
+            loc: 'nikko',
+            text: '享用早午餐後，出門搭 BTS 淺綠線僅 1 站直通潮流殿堂。',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (僅 1 站)',
+              fromTitle: 'BTS Thong Lo (E6)',
+              toTitle: 'BTS Phrom Phong (E5)',
+              fromStation: { name: 'BTS Thong Lo (E6)', exit: '3號入口' },
+              toStation: { name: 'BTS Phrom Phong (E5)', exit: '6號出口空橋直通' },
+              duration: '2 分鐘 (1站)',
+              cost: '17 銖/人',
+              direction: '往 Khu Khot (N24) 方向 (僅1站)',
+              instructions: '• 上車：BTS Thong Lo (E6 通羅站)<br>• 月台方向：往 Khu Khot (N24) 方向（僅坐 1 站）<br>• 下車站：BTS Phrom Phong (E5 澎蓬站)<br>• 出口：6 號出口走空橋 (Skywalk) 直通 EMSPHERE 商場 2 樓',
+              waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7303, 100.5698], [13.7314, 100.5673]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7314,100.5673&travelmode=transit'
+            }
+          },
+          {
+            time: '12:30 - 15:30',
+            title: '❷ EMSPHERE 潮流購物城：超跑概念館 ＆ 潮牌球鞋',
+            loc: 'emsphere',
+            text: '曼谷最新旗艦地標！男生最愛逛的超跑概念館、潮流球鞋選物店與奢華室內美食街。',
+            transitToNext: {
+              mode: 'grab',
+              badgeText: '🚕 Grab 短駁 / 🚆 BTS',
+              fromTitle: 'EMSPHERE',
+              toTitle: 'Here Hai 餐廳',
+              duration: '10 分鐘',
+              cost: 'Grab 約 100 銖/車',
+              direction: '往 Ekkamai Soi 10',
+              instructions: '• Grab 方案：商場門口叫車定位 Here Hai Restaurant (Ekkamai Soi 10)。<br>• BTS 備案：E5 Phrom Phong 往 Kheha 搭 2 站至 E7 Ekkamai 1 號出口轉車 3 分鐘進巷。',
+              waypoints: [[13.7314, 100.5673], [13.7250, 100.5780], [13.7190, 100.5852], [13.7297, 100.5855]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7314,100.5673&destination=13.7297,100.5855&travelmode=driving'
+            }
+          },
+          {
+            time: '16:00 - 17:30',
+            title: '❸ Here Hai 喜愛海鮮：米其林痛風蟹肉大餐',
+            loc: 'herehai',
+            text: '回飯店隔壁 Ekkamai 巷，避開排隊潮！必點鋪滿金黃大塊蟹肉的「巨無霸蟹肉炒飯」與「黑椒蒜炒皮皮蝦」。',
+            transitToNext: {
+              mode: 'bts_mrt',
+              badgeText: '🚆 BTS 轉 🚇 MRT (防塞車必備)',
+              fromTitle: 'BTS Ekkamai (E7)',
+              toTitle: 'MRT Sam Yot (BL30)',
+              fromStation: { name: 'BTS Ekkamai (E7)', exit: '進站' },
+              toStation: { name: 'MRT Sam Yot (BL30)', exit: '1號出口' },
+              duration: '30 分鐘 (零塞車)',
+              cost: 'BTS 28銖 + MRT 38銖',
+              direction: '雙鐵特快・老城會合',
+              instructions: '⚠️ 下班尖峰嚴禁搭車去老城！雙鐵 100% 準時：<br>1. BTS：從 E7 Ekkamai 搭往 Khu Khot 方向 3 站至 BTS Asok (E4)<br>2. 站內轉乘：走 3 號出口下樓進 MRT Sukhumvit (BL22)<br>3. MRT 藍線：往 Tha Phra (經 Hua Lamphong) 方向搭 9 站至 MRT Sam Yot (BL30 三耀站)<br>4. 出口：走 1 號出口與導遊及嘟嘟車隊會合！',
+              waypoints: [[13.7297, 100.5855], [13.7190, 100.5852], [13.7370, 100.5604], [13.7378, 100.5612], [13.7285, 100.5375], [13.7371, 100.5173], [13.7471, 100.5034], [13.7525, 100.5048]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7297,100.5855&destination=13.7471,100.5034&travelmode=transit'
+            }
+          },
+          {
+            time: '19:00 - 22:30',
+            title: '❹ 尊榮包車：米其林嘟嘟車老城狂飆',
+            loc: 'tuktuk',
+            text: '三人包一台專屬改裝嘟嘟車！免排隊狂刷【乃鴻炒河粉】、【鬼門 Pad Thai 蛋包河粉】與【胡椒豬肚湯】，夜訪無人臥佛寺震撼夜景。',
+            transitToNext: {
+              mode: 'grab',
+              badgeText: '🚕 Grab 夜間直達',
+              fromTitle: '老城區夜巡終點',
+              toTitle: '曼谷日航酒店',
+              duration: '20 分鐘',
+              cost: '約 160–200 銖/車',
+              direction: '走快速道路直達通羅',
+              instructions: '22:30 結束後已無尖峰塞車，三人直接叫 Grab 走快速道路直奔通羅日航酒店，洗澡休息。',
+              waypoints: [[13.7525, 100.5048], [13.7480, 100.5200], [13.7400, 100.5500], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7525,100.5048&destination=13.7272,100.5794&travelmode=driving'
+            }
+          },
+          {
+            time: '23:00',
+            title: '❺ 返回曼谷日航酒店 收拾行李',
+            loc: 'nikko',
+            text: '夜巡結束吹晚風回日航酒店，打包行李並確認退稅單據，為明日返台做好準備。'
+          }
         ]
       },
       5: {
@@ -1262,9 +1708,48 @@ svg.leaflet-image-layer.leaflet-interactive path {
         stops: ['nikko', 'maevaree', 'bkk'],
         path: ['nikko', 'maevaree', 'bkk'],
         notes: [
-          { time: '07:30 - 09:00', title: '❶ 悠閒享受日航最後的朝食', loc: 'nikko', text: '享用日航天花板等級的日料朝食（現煎玉子燒、烤魚、精緻漬物）。悠閒打包行李辦理退房。' },
-          { time: '09:10 - 09:30', title: '❷ 走路 3 分鐘外帶【Mae Varee】芒果飯', loc: 'maevaree', text: '步行至 BTS Thong Lo 站 3 號出口，外帶曼谷公認最好吃的三色斑蘭芒果糯米飯，車上解饞。' },
-          { time: '09:30 - 12:40', title: '❸ 直奔蘇凡納布機場 ➔ 搭機返台', loc: 'bkk', text: '叫車前往機場（約 40 分鐘）。辦理退稅與出境手續，搭乘泰航 TG 634（12:40 起飛），17:20 抵達台北！' }
+          {
+            time: '07:30 - 09:00',
+            title: '❶ 悠閒享受日航最後的朝食',
+            loc: 'nikko',
+            text: '享用日航天花板等級的日料朝食（現煎玉子燒、烤魚、精緻漬物）。悠閒打包行李辦理退房。',
+            transitToNext: {
+              mode: 'walk',
+              badgeText: '🚶 巷口散步',
+              fromTitle: '曼谷日航酒店',
+              toTitle: 'Mae Varee 芒果飯',
+              duration: '3 分鐘 (220m)',
+              cost: '0 銖',
+              direction: '往南走向素坤逸路口',
+              instructions: '出日航大門往南走向素坤逸路口（BTS Thong Lo 3 號出口旁、55 巷口第一間），買完提回大廳享用或帶上車。',
+              waypoints: [[13.7272, 100.5794], [13.7255, 100.5795], [13.7246, 100.5793]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7246,100.5793&travelmode=walking'
+            }
+          },
+          {
+            time: '09:10 - 09:30',
+            title: '❷ 走路 3 分鐘外帶【Mae Varee】芒果飯',
+            loc: 'maevaree',
+            text: '步行至 BTS Thong Lo 站 3 號出口，外帶曼谷公認最好吃的三色斑蘭芒果糯米飯，車上解饞。',
+            transitToNext: {
+              mode: 'grab',
+              badgeText: '🚕 Grab SUV / 預約送機',
+              fromTitle: '曼谷日航酒店 1F 大廳',
+              toTitle: '蘇凡納布機場 4F 出發層',
+              duration: '35–40 分鐘',
+              cost: '約 500–650 銖/車',
+              direction: '走高速公路直達機場',
+              instructions: '09:30 於日航 1 樓大廳上車，定位 Suvarnabhumi Airport 4F Departure (泰航櫃檯 Row H/J)，走高速公路直達機場辦理退稅與登機。',
+              waypoints: [[13.7272, 100.5794], [13.7430, 100.6050], [13.7380, 100.6450], [13.7220, 100.7020], [13.6900, 100.7501]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.6900,100.7501&travelmode=driving'
+            }
+          },
+          {
+            time: '09:30 - 12:40',
+            title: '❸ 直奔蘇凡納布機場 ➔ 搭機返台',
+            loc: 'bkk',
+            text: '叫車前往機場（約 40 分鐘）。辦理退稅與出境手續，搭乘泰航 TG 634（12:40 起飛），17:20 抵達台北！'
+          }
         ]
       }
     };
@@ -1290,6 +1775,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       attributionControl: false,
       layers: [googleEnLayer] // Default to English!
     }).setView([13.738, 100.580], 12);
+
+    let activeTransitLayerGroup = L.layerGroup().addTo(map);
 
     let activeLang = 'en';
     function switchMapLanguage(type) {
@@ -1329,6 +1816,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     let currentMarkers = {};
     let currentPolyline = null;
     let currentDay = 'all';
+
+    function getBadgeClass(mode) {
+      if (mode === 'bts') return 'bts-badge';
+      if (mode === 'mrt' || mode === 'bts_mrt') return 'mrt-badge';
+      if (mode === 'grab') return 'grab-badge';
+      if (mode === 'boat') return 'boat-badge';
+      return 'walk-badge';
+    }
 
     // Helper: Create custom HTML Marker with clean Chinese text
     function createCustomMarker(locKey, stepNumber = null) {
@@ -1402,6 +1897,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
       const data = DAY_ROUTES[dayKey];
       if (!data) return;
 
+      // Clear any active transit highlights
+      if (typeof activeTransitLayerGroup !== 'undefined' && activeTransitLayerGroup) {
+        activeTransitLayerGroup.clearLayers();
+      }
+
       // Update Tabs Style
       document.querySelectorAll('.day-tab').forEach(tab => {
         tab.className = 'day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700';
@@ -1423,7 +1923,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       document.getElementById('day-main-title').innerText = data.title;
       document.getElementById('day-main-desc').innerText = data.desc;
 
-      // Render Route Notes in Sidebar with Prices & Google Maps Buttons
+      // Render Route Notes & Transit Connectors in Sidebar
       const listContainer = document.getElementById('route-list');
       listContainer.innerHTML = '';
       data.notes.forEach((note, idx) => {
@@ -1467,6 +1967,51 @@ svg.leaflet-image-layer.leaflet-interactive path {
           </div>
         `;
         listContainer.appendChild(item);
+
+        // If note has transitToNext, render transit connector card!
+        if (note.transitToNext) {
+          const transit = note.transitToNext;
+          const connEl = document.createElement('div');
+          let lineClass = 'timeline-connector';
+          if (transit.mode === 'bts') lineClass += ' bts-line';
+          else if (transit.mode === 'mrt' || transit.mode === 'bts_mrt') lineClass += ' mrt-line';
+          else if (transit.mode === 'boat') lineClass += ' boat-line';
+
+          const badgeClass = getBadgeClass(transit.mode);
+
+          connEl.className = lineClass;
+          connEl.innerHTML = `
+            <div class="transit-card" id="transit-card-${dayKey}-${idx}" onclick="focusTransit('${dayKey}', ${idx})">
+              <div class="flex items-center justify-between mb-1 gap-1">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="station-pill ${badgeClass}">${transit.badgeText}</span>
+                  <span class="text-[11px] font-bold text-slate-800">${transit.fromTitle} ➔ ${transit.toTitle}</span>
+                </div>
+                <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200 shrink-0">
+                  ⏱️ ${transit.duration}
+                </span>
+              </div>
+              <div class="text-[11px] text-slate-600 leading-snug mt-1">
+                <div>${transit.instructions}</div>
+              </div>
+              <div class="flex items-center justify-between flex-wrap gap-1.5 pt-1.5 border-t border-slate-200/70 mt-1.5">
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium">
+                  ${transit.direction ? `<span>🧭 ${transit.direction}</span>` : ''}
+                  ${transit.cost ? `<span>• 💰 ${transit.cost}</span>` : ''}
+                </div>
+                <div class="flex items-center gap-1 shrink-0">
+                  <button onclick="event.stopPropagation(); focusTransit('${dayKey}', ${idx});" class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 hover:bg-blue-200 text-blue-700 transition">
+                    🎯 看路線
+                  </button>
+                  <a href="${transit.gmapsDir}" target="_blank" onclick="event.stopPropagation();" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center gap-0.5">
+                    🧭 導航
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+          listContainer.appendChild(connEl);
+        }
       });
 
       // Clear existing markers & polyline
@@ -1507,6 +2052,109 @@ svg.leaflet-image-layer.leaflet-interactive path {
       if (boundsCoords.length > 0) {
         map.fitBounds(boundsCoords, { padding: [40, 40], maxZoom: 14 });
       }
+    }
+
+    // Interactive Focus on Specific Transit Leg
+    function focusTransit(dayKey, idx) {
+      const day = DAY_ROUTES[dayKey];
+      if (!day || !day.notes || !day.notes[idx] || !day.notes[idx].transitToNext) return;
+      const transit = day.notes[idx].transitToNext;
+
+      // Active card highlight in sidebar
+      document.querySelectorAll('.transit-card').forEach(el => el.classList.remove('active-transit'));
+      const card = document.getElementById(`transit-card-${dayKey}-${idx}`);
+      if (card) card.classList.add('active-transit');
+
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        setMobileView('map');
+      }
+
+      setTimeout(() => {
+        map.invalidateSize();
+        activeTransitLayerGroup.clearLayers();
+
+        let color = '#2563eb';
+        let dashArray = null;
+        if (transit.mode === 'bts') color = '#16a34a';
+        else if (transit.mode === 'mrt' || transit.mode === 'bts_mrt') color = '#2563eb';
+        else if (transit.mode === 'grab') color = '#059669';
+        else if (transit.mode === 'walk') { color = '#475569'; dashArray = '8, 6'; }
+        else if (transit.mode === 'boat') color = '#0284c7';
+
+        // Background glow
+        const bgLine = L.polyline(transit.waypoints, {
+          color: '#ffffff',
+          weight: 9,
+          opacity: 0.95
+        }).addTo(activeTransitLayerGroup);
+
+        // Foreground route
+        const fgLine = L.polyline(transit.waypoints, {
+          color: color,
+          weight: 5,
+          opacity: 0.95,
+          dashArray: dashArray
+        }).addTo(activeTransitLayerGroup);
+
+        // Start Station Marker
+        const startIcon = L.divIcon({
+          className: '',
+          html: `
+            <div style="background:${color}; color:#fff; padding:4px 9px; border-radius:14px; font-size:11px; font-weight:800; box-shadow:0 3px 10px rgba(0,0,0,0.3); border:2px solid #fff; white-space:nowrap; display:flex; align-items:center; gap:4px;">
+              <span>🚉</span>
+              <span>${transit.fromStation ? transit.fromStation.name : transit.fromTitle}</span>
+            </div>
+          `,
+          iconAnchor: [20, 16]
+        });
+        const startCoord = transit.waypoints[0];
+        const startMarker = L.marker(startCoord, { icon: startIcon }).addTo(activeTransitLayerGroup);
+
+        // End Station Marker
+        const exitHtml = (transit.toStation && transit.toStation.exit) ? `<span class="exit-badge">${transit.toStation.exit}</span>` : '';
+        const endIcon = L.divIcon({
+          className: '',
+          html: `
+            <div style="background:#0f172a; color:#fff; padding:4px 9px; border-radius:14px; font-size:11px; font-weight:800; box-shadow:0 3px 10px rgba(0,0,0,0.3); border:2px solid #fff; white-space:nowrap; display:flex; align-items:center; gap:4px;">
+              <span>🏁</span>
+              <span>${transit.toStation ? transit.toStation.name : transit.toTitle}</span>
+              ${exitHtml}
+            </div>
+          `,
+          iconAnchor: [20, 16]
+        });
+        const endCoord = transit.waypoints[transit.waypoints.length - 1];
+        const endMarker = L.marker(endCoord, { icon: endIcon }).addTo(activeTransitLayerGroup);
+
+        map.fitBounds(fgLine.getBounds(), { padding: [50, 50], maxZoom: 15 });
+
+        // Popup with full step instructions and Google Maps navigation button
+        const popupHtml = `
+          <div class="p-1 min-w-[240px] max-w-[290px]">
+            <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+              <span class="station-pill ${getBadgeClass(transit.mode)}">${transit.badgeText}</span>
+              <span class="text-[10px] font-mono font-bold text-slate-500">⏱️ ${transit.duration}</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 mb-1">
+              ${transit.fromTitle} ➔ ${transit.toTitle}
+            </div>
+            <div class="text-[11px] text-slate-600 leading-relaxed mb-2 bg-slate-50 p-2 rounded-lg border border-slate-200">
+              ${transit.instructions}
+            </div>
+            <div class="flex items-center justify-between text-[10px] text-slate-500 font-bold mb-2.5">
+              <span>${transit.direction ? '🧭 ' + transit.direction : ''}</span>
+              <span>${transit.cost ? '💰 ' + transit.cost : ''}</span>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex justify-end">
+              <a href="${transit.gmapsDir}" target="_blank" class="btn-maps w-full justify-center">
+                🧭 啟動 Google Maps 實時導航
+              </a>
+            </div>
+          </div>
+        `;
+        endMarker.bindPopup(popupHtml).openPopup();
+      }, isMobile ? 220 : 50);
     }
 
     // Mobile View Toggle ('list' vs 'map')
