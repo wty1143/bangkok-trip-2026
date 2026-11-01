@@ -858,7 +858,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div>
           <div class="flex items-center gap-1.5 flex-wrap">
             <h1 class="text-xs md:text-base font-bold text-slate-900 tracking-tight">曼谷五天四夜・動態路線指南</h1>
-            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] md:text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">官方菜單實價 ＆ 點對點交通導航</span>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] md:text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">現場壓力測試實戰版・官方菜單實價</span>
           </div>
           <p class="text-[10px] md:text-[11px] text-slate-500 flex items-center gap-1.5">
             <span>📅 11/13(五) - 11/17(二)</span> • 
@@ -869,7 +869,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
     </div>
 
-    <!-- DAY SELECTOR TABS (Smooth horizontal drag on mobile) -->
+    <!-- DAY SELECTOR TABS -->
     <div id="day-tabs-container" class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5 -mx-1 px-1">
       <button onclick="selectDay('all')" id="tab-all" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-blue-600 bg-blue-600 text-white shadow-sm shrink-0">
         📍 全域總覽
@@ -884,7 +884,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         D3 恰圖恰蟹肉飯高空吧
       </button>
       <button onclick="selectDay(4)" id="tab-4" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
-        D4 嵩越老街秋葉原夜巡
+        D4 Google潮城秋葉原夜巡
       </button>
       <button onclick="selectDay(5)" id="tab-5" class="day-tab whitespace-nowrap px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg text-xs font-bold transition border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
         D5 芒果飯專車返台
@@ -895,11 +895,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <!-- WORKSPACE: DESKTOP SPLIT VIEW / MOBILE SWITCHABLE VIEW -->
   <div class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
 
-    <!-- MAP CONTAINER (Full height, toggleable on mobile, always visible on desktop) -->
+    <!-- MAP CONTAINER -->
     <div id="map-container" class="flex-1 relative bg-slate-200 h-full w-full hidden md:block">
       <div id="map" class="w-full h-full z-10"></div>
 
-      <!-- TRANSIT NAVIGATION ACTIVE FLOATING BANNER (Clear collision & 1-tap exit) -->
+      <!-- TRANSIT NAVIGATION ACTIVE FLOATING BANNER -->
       <div id="transit-banner" class="hidden absolute top-3 left-1/2 -translate-x-1/2 z-30 bg-slate-900/90 text-white px-3.5 py-1.5 rounded-full shadow-2xl border border-slate-700/80 flex items-center gap-2.5 text-xs backdrop-blur-md max-w-[92vw]">
         <div class="flex items-center gap-1.5 truncate">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
@@ -959,12 +959,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </p>
       </div>
 
-      <!-- ROUTE TIMELINE LIST (SCROLLABLE WITH EXTRA BOTTOM PADDING FOR MOBILE PILL) -->
+      <!-- ROUTE TIMELINE LIST -->
       <div id="route-list" class="flex-1 overflow-y-auto p-3.5 md:p-4 space-y-2.5 pb-24 md:pb-4 no-scrollbar">
         <!-- Injected via JavaScript -->
       </div>
 
-      <!-- BOTTOM ACTION FOOTER (Desktop Keyboard / Next Day bar) -->
+      <!-- BOTTOM ACTION FOOTER -->
       <div class="p-3 border-t border-slate-200 bg-white hidden md:flex items-center justify-between text-xs text-slate-500 shrink-0">
         <button onclick="prevDay()" class="px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100 font-medium transition active:scale-95">
           ◀ 上一天
@@ -978,7 +978,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   </div>
 
-  <!-- FLOATING MOBILE BOTTOM SWITCHER PILL (Apple/Google Maps style) -->
+  <!-- FLOATING MOBILE BOTTOM SWITCHER PILL -->
   <div class="md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex items-center bg-slate-900/90 text-white backdrop-blur-md p-1 rounded-full shadow-2xl border border-slate-700/60">
     <button onclick="setMobileView('list')" id="m-btn-list" class="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition bg-blue-600 text-white shadow">
       📋 行程清單
@@ -1008,7 +1008,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#f59e0b',
         tag: '還願祈福 ＆ 必比登雞飯',
         price: '四面佛供品 25-50 銖 / 還願舞 260-710 銖｜水門雞飯 60-100 銖/盤',
-        desc: '全泰國最負盛名的四面神（BTS Chit Lom 站 2 號出口空橋直達）。還願後步行 8 分鐘（650m）至米其林必比登「紅大哥水門雞飯」享用早午餐。',
+        desc: '全泰國最負盛名的四面神（BTS Chit Lom 站 2 號出口空橋直達）。還願後步行 8 分鐘（650m）至米其林必比登「紅大哥水門雞飯」享用早午餐（亦可至 CentralWorld 3F 紅大哥分店吹冷氣吃）。',
         timeNote: 'BTS 直達 5 站',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Erawan+Shrine+Bangkok'
       },
@@ -1021,7 +1021,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#ec4899',
         tag: '核心大本營',
         price: '已訂房 (含頂級日式早餐)',
-        desc: '本趟三工程師核心基地。BTS Thong Lo 站 3 號出口步行 3 分鐘。2 樓直通 Let\'s Relax Spa，出門即是通羅深夜美食與酒吧街。',
+        desc: '本趟三工程師核心基地。BTS Thong Lo 站 3 號出口步行 3 分鐘。2 樓直通 Let\'s Relax Spa，出門即是通羅深夜美食與酒吧街。回房休息、放戰利品超方便！',
         timeNote: '全天可回',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Hotel+Nikko+Bangkok'
       },
@@ -1034,7 +1034,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#f59e0b',
         tag: 'Klook 專車接送',
         price: 'Klook 預約休旅車 (SUV/MPV) 約 NT$ 680-850/車 (全含過路費)',
-        desc: '泰航 TG 633 降落（16:50）與 TG 634 起飛（12:40）航廈。預訂 Klook 機場接送於 2 樓 3–4 號門內找舉牌司機，免排隊免溝通直達飯店。',
+        desc: '泰航 TG 633 降落（16:50）與 TG 634 起飛（12:40）航廈。預訂 Klook 機場接送於 2 樓 3–4 號門內找舉牌司機，免排隊免溝通直達飯店。週五晚間預留 75-90 分鐘市區車程。',
         timeNote: '專車直達',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Suvarnabhumi+Airport',
         klook: 'https://www.klook.com/zh-TW/airport-transfers/'
@@ -1048,7 +1048,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#db2777',
         tag: '官網 Menu 實價認證',
         price: '泰式按摩 2hr 1,300 銖｜草本熱敷 2hr 1,500 銖｜精油 1hr 1,600 銖｜足部 1hr 875 銖',
-        desc: '位在日航酒店 2 樓 Ginza Thonglor（營業 10:00–24:00，最後收客 22:00）。結束皆贈招牌芒果糯米飯與熱茶。建議提前一週透過官方 WhatsApp 或 Line 預約！',
+        desc: '位在日航酒店 2 樓 Ginza Thonglor（營業 10:00–24:00，最後收客 22:00）。結束皆贈招牌芒果糯米飯與熱茶。\n💡 預訂建議：週五 D1 建議 WhatsApp 預約 20:00–22:00（預留出關與週五晚塞車緩衝）；D3 週日建議預約 17:30 或 18:00 二刷（吃完 Here Hai 悠閒回店按）！',
         timeNote: '電梯直達 2F',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Let%27s+Relax+Spa+Ginza+Thonglor+Hotel+Nikko',
         klook: 'https://www.klook.com/zh-TW/activity/11127-lets-relax-spa-packages-bangkok/'
@@ -1062,7 +1062,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#ea580c',
         tag: '通羅 70 年老字號宵夜',
         price: '招牌自製雞蛋叉燒雲吞麵 70-100 銖 / 脆皮燒肉炒飯 90 銖',
-        desc: '按完摩 21:30 墊肚子的完美選擇！通羅巷口 70 年傳奇老店「Bamee Kon Sae Lee (李家麵店)」或通羅 55 巷沿線深夜泰式熱炒、海南雞飯，吃完順路散步去密室酒吧！',
+        desc: '按完摩 22:00 墊肚子的完美選擇！通羅巷口 70 年傳奇老店「Bamee Kon Sae Lee (李家麵店)」或通羅 55 巷沿線熱炒。\n💡 備案指南：李家麵店營業至 23:00，若招牌脆皮燒肉售罄，巷口對面 Sukhumvit Soi 38 巷口有深夜泰式熱炒、豬腳飯與海南雞飯可無縫替代！',
         timeNote: '日航步行 3 分鐘',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Bamee+Kon+Sae+Lee+Thong+Lo'
       },
@@ -1075,7 +1075,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#8b5cf6',
         tag: '亞洲 50 大 Speakeasy',
         price: '酒單定價 420-490 銖 (+17%稅服後實付約 490-575 銖/杯，低消一杯)',
-        desc: '隱身在通羅 10 巷旁的高中生鐵捲置物櫃暗門後（營業 18:00–02:00）！主打 Past/Present/Future 與時光膠囊主題調酒，離日航僅 800m，微醺散步 8 分鐘回房。',
+        desc: '隱身在通羅 10 巷旁的高中生鐵捲置物櫃暗門後（營業 18:00–02:00）！主打 Past/Present/Future 與時光膠囊主題調酒。\n💡 訂位提醒：店內座位數不多，週五 22:00 後是滿座尖峰，三人 Walk-in 容易向隅。強烈建議出發前一週透過官方 IG 訂位連結 (Nightify) 或 Email 預訂 22:30–22:45 時段！',
         timeNote: '通羅巷內・營業至 02:00',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Find+The+Locker+Room+Bangkok'
       },
@@ -1088,7 +1088,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#0284c7',
         tag: 'Klook 預訂免現場議價',
         price: '2小時私人包船約 1,500-2,200 銖/船 (三人平攤約 500-730 銖/人)',
-        desc: '先在 Klook/KKday 訂好私人包船，於指定碼頭（Sathorn 沙吞碼頭或 Si Phraya 碼頭）報名字直接登船免喊價！穿梭市中心百年水上木屋、看水巨蜥，水道轉角仰望 20 層樓高（69m）水門寺純金巨佛！',
+        desc: '先在 Klook/KKday 訂好私人包船，於指定碼頭報名字直接登船免喊價！穿梭市中心百年水上木屋、看野生水巨蜥，水道轉角震撼仰望 20 層樓高（69m）水門寺純金巨佛！\n💡 登船重要確認：登船前務必先跟船長確認回程改停靠「Si Phraya Pier (N3)」或海事局碼頭 (Marine Dept Pier)，下船直接走進噠叻仔文青老街，免被載回沙吞碼頭走冤枉路！',
         timeNote: '包船遊覽 90-120 分鐘',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Wat+Paknam+Phasi+Charoen+Bangkok',
         klook: 'https://www.klook.com/zh-TW/search/result/?query=%E6%9B%BC%E8%B0%B7%20%E9%95%B7%E5%B0%BE%E8%88%B9%20%E6%B0%B4%E9%96%80%E5%AF%BA'
@@ -1102,7 +1102,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#ea580c',
         tag: '百年老宅 ＆ 黑手零件牆',
         price: '特調柳橙咖啡/拿鐵 140-180 銖｜胡蘿蔔蛋糕/蛋塔 150-220 銖 (低消一品項)',
-        desc: '於 Si Phraya (N3) 或 Marine Dept 碼頭下船，穿過噠叻仔古董老爺車零件牆與壁畫巷（步行 5 分鐘）即達百年老宅【Hong Sieng Kong 洪成公】，在大榕樹河畔吹風喝冰咖啡。',
+        desc: '於 Si Phraya (N3) 或 Marine Dept 碼頭下船，穿過噠叻仔古董老爺車零件牆與壁畫巷（步行 4-5 分鐘）即達百年老宅【Hong Sieng Kong 洪成公】，在大榕樹河畔吹風喝冰咖啡放空。可順便在此吃點輕食墊胃。\n💡 傍晚雙方案：可看 19:00 第一場光雕秀後提早去吃班塔通路（方案A），或留看 20:45 週末壓軸水上煙火秀（方案B）！',
         timeNote: '下船散步 5 分鐘即達',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Hong+Sieng+Kong+Bangkok'
       },
@@ -1115,7 +1115,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#eab308',
         tag: '光影煙火節',
         price: '免費入場觀賞 (Free)',
-        desc: '11 月 Vijit Chao Phraya 湄南河燈光節主戰場！跨河天空公園步道欣賞大橋 3D 光雕投影＋週末壓軸璀璨水上煙火秀！',
+        desc: '11 月 Vijit Chao Phraya 湄南河燈光節主戰場！跨河天空公園步道欣賞大橋 3D 光雕投影＋週末壓軸璀璨水上煙火秀！\n💡 官方時刻提醒：18:00–22:00 每逢整點/半點有大橋 3D 光雕燈光秀（19:00 第一場），而週末限定的壓軸水上煙火施放時間通常在 20:45！',
         timeNote: '紀念橋天空公園',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Chao+Phraya+Sky+Park'
       },
@@ -1128,7 +1128,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#ea580c',
         tag: '大學生宵夜第一戰區',
         price: 'Jeh O 媽媽麵鍋 300-850 銖｜爆漿烤吐司 65-120 銖｜炸油條斑蘭醬 70 銖',
-        desc: '朱拉隆功大學旁最火紅宵夜神街！米其林 Jeh O Chula 海鮮媽媽麵、Nueng Nom Nua 鮮奶炭烤吐司、泰式脆皮油條、生醃海鮮，離紀念橋僅 12 分鐘車程。',
+        desc: '朱拉隆功大學旁最火紅宵夜神街！米其林 Jeh O Chula 海鮮媽媽麵、Nueng Nom Nua 鮮奶炭烤吐司、泰式脆皮油條、生醃海鮮。\n💡 週末排隊免等神招：手機先裝好【QueQ App】，規定在餐廳半徑 2 公里內即可線上抽號！當從紀念橋搭乘 MRT 抵達 Hua Lamphong 站進入 2 公里範圍時，立刻在車上抽 Jeh O Chula 號碼牌；Nueng Nom Nua 內用若人多可改走外帶櫃檯（Takeaway 免排隊）！',
         timeNote: 'MRT 藍線 + 短駁 12 分鐘',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Ban+That+Thong+Road+Bangkok'
       },
@@ -1141,7 +1141,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#0891b2',
         tag: '市集挖寶 ＋ 冷氣古董玩具城',
         price: '椰子冰 60 銖 / 泰奶 50 銖 / 設計潮T 250-390 銖 (紅樓冷氣免費吹)',
-        desc: 'BTS 直達免換車！早上先逛恰圖恰設計服飾、香氛與手工皮件；中午變熱直接過馬路進對面冷氣開放的【DD Mall 紅樓 (Bangsue Junction)】，1-5 樓滿滿古董老玩具、底片相機、黑膠與美式古著！',
+        desc: 'BTS 直達免換車！早上先逛恰圖恰設計服飾、香氛與手工皮件；中午變熱直接過馬路進對面冷氣開放的【DD Mall 紅樓 (Bangsue Junction)】，1-5 樓滿滿古董老玩具、底片相機、黑膠與美式古著！逛到 14:00 搭 BTS 先回日航放戰利品沖涼。\n💡 避開午休神動線：14:00 先回日航放戰利品吹冷氣，15:40 輕鬆前往 Here Hai 排 16:00 下午場第一輪！',
         timeNote: 'BTS Mo Chit 站 1 號出口',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Bangsue+Junction+Chatuchak'
       },
@@ -1152,10 +1152,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
         lng: 100.5855,
         icon: '🦀',
         color: '#dc2626',
-        tag: '官網 Menu 實價・週日營業',
+        tag: '官網 Menu 實價・避開午休',
         price: '爆量蟹肉炒飯 3人中份 750 銖 (小份340)｜蒜蓉去殼皮皮蝦 380-420 銖｜蟹肉歐姆蛋 380 銖',
-        desc: '⚠️ 週一公休，特排於週日逛完恰圖恰回程享用！整盤鋪滿肥美金黃大塊蟹肉與蒜炒無殼皮皮蝦，三人合點人均約 450–550 銖超滿足！（營業至 17:30）',
-        timeNote: '日航隔壁站 Ekkamai',
+        desc: '⚠️ 關鍵營業時間：週一公休，營業分為兩段 10:00–15:00 與 16:00–17:30（15:00–16:00 午休清場不收客）。特排 16:00 下午場第一輪，完美避開正中午烈日排隊，吃完爽回飯店按摩！',
+        timeNote: '日航隔壁站 Ekkamai 10巷',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Here+Hai+Restaurant+Bangkok'
       },
       tone: {
@@ -1167,20 +1167,33 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#0284c7',
         tag: '百萬天際線夜景',
         price: '酒單定價 400-600 銖 (+17%稅服後實付約 470-650 銖/杯，免門票低消一杯)',
-        desc: 'BTS Thong Lo 站 4 號出口空橋直通！巨大阿凡達發光水母天幕與 360 度鳥瞰曼谷百萬夜景。喝完散步 3 分鐘過馬路即回日航酒店。',
+        desc: 'BTS Thong Lo 站 4 號出口空橋直通！巨大阿凡達發光水母天幕與 360 度鳥瞰曼谷百萬夜景。喝完散步 3 分鐘過馬路即回日航酒店。\n⚠️ 必帶證件硬性規定：Tichuca 在 1 樓電梯口安檢非常嚴格，只接受「實體護照正本 (Physical Passport)」，手機拍照、影本或台灣身分證件一律會被保安攔在樓下！出門前請三人務必帶好實體護照（男生請避免穿無袖背心與海灘拖鞋）。',
         timeNote: '日航步行 3 分鐘',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Tichuca+Rooftop+Bar+Bangkok'
       },
+      google: {
+        id: 'google',
+        name: 'Google 曼谷辦公室 (Park Ventures 22F)',
+        lat: 13.7431,
+        lng: 100.5489,
+        icon: '🏢',
+        color: '#4285f4',
+        tag: 'Googler 專屬彩蛋・BTS直通',
+        price: 'Google 員工刷 Badge 參觀 (Free)',
+        desc: '座落於 Park Ventures Ecoplex 頂級綠建築大樓 22 樓（BTS Phloen Chit 站 2 號出口空橋直通）！辦公室飽覽曼谷市區核心綠景，泰式設計元素與 Microkitchen 零食吧超讚。\n💡 參觀提醒：Googler 刷員工證進入，同行非 Googler 朋友記得提前在內部系統申請 Guest badge，並請朋友攜帶實體護照於大樓 1 樓訪客櫃檯換證！',
+        timeNote: 'BTS Phloen Chit 2號出口',
+        gmaps: 'https://www.google.com/maps/search/?api=1&query=Park+Ventures+Ecoplex+Bangkok'
+      },
       emsphere: {
         id: 'emsphere',
-        name: 'EMSPHERE 潮流城 (＆ Google 辦公室彩蛋)',
+        name: 'EMSPHERE 潮流城 (潮牌選品與超跑概念館)',
         lat: 13.7314,
         lng: 100.5673,
         icon: '🏙️',
         color: '#9333ea',
-        tag: '超跑概念館 ＆ Googler 順路彩蛋',
+        tag: '超跑概念館 ＆ 潮流選品',
         price: '免費參觀｜G樓精品甜點輕食 150-300 銖 (留肚子給晚上夜巡)',
-        desc: '日航搭 BTS 僅 1 站！逛 2F 頂級超跑概念館與潮牌選品。💡 Googler 彩蛋：若想刷 badge 參觀 Google 曼谷辦公室，繼續往西坐 3 站至 Phloen Chit 站 2 號出口空橋直通 Park Ventures 22F！',
+        desc: 'BTS Phrom Phong 站 6 號出口空橋直通！逛 2F 頂級超跑概念館與最新潮牌選品。中午在 G 樓簡單享用輕食甜點即可，下午從旁邊 BTS Asok 轉乘 MRT 藍線直奔老城區！',
         timeNote: 'BTS Phrom Phong 6號出口',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=EMSPHERE+Bangkok'
       },
@@ -1193,7 +1206,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#d97706',
         tag: '曼谷最潮河畔老街 ＆ 精品烘豆',
         price: 'SCR 精品手沖/Dirty 咖啡 120-180 銖｜手工蛋糕甜點 150-190 銖',
-        desc: '近年曼谷年輕人與街拍玩家最愛的百年香料老街！老倉庫改建的極簡工業風烘豆館（SCR Song Wat Coffee Roasters、A Pink Rabbit）、塗鴉牆與河畔夕陽，隨便走走拍拍超有味道。',
+        desc: '近年曼谷年輕人與街拍玩家最愛的百年香料老街！老倉庫改建的極簡工業風烘豆館（SCR Song Wat Coffee Roasters、A Pink Rabbit）、塗鴉牆與河畔夕陽，隨便走走拍拍超有味道。14:15–16:15 好好享受咖啡時光後，步行前往 Mega Plaza 挖寶！',
         timeNote: 'MRT 龍蓮寺站步行 6 分鐘',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Song+Wat+Road+Bangkok'
       },
@@ -1206,7 +1219,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#4f46e5',
         tag: '復古電玩・底片相機・模型公仔',
         price: '冷氣商場免費逛 (公仔/底片機/老電玩挖寶視個人戰力)',
-        desc: '就在晚上嘟嘟車集合點【MRT Sam Yot 三耀站 1 號出口】正對面！整棟 6 層樓滿滿的復古遊戲機、老底片相機與鏡頭、鋼彈模型、海賊王/七龍珠公仔，三個工程師逛完下樓直接無縫搭嘟嘟車！',
+        desc: '整棟 6 層樓滿滿的復古遊戲機、老底片相機與鏡頭、鋼彈模型、海賊王/七龍珠公仔與盒玩。\n⚠️ 提早打烊提醒：大樓表定營業到 19:30，但裡面數百間獨立玩具相機小店很多在 18:00–18:30 就開始拉鐵門收攤！特排 16:20–18:30 入場留足 2 小時好好挖寶。商場正對面過斑馬線就是【MRT Sam Yot 1 號出口】嘟嘟車集合點！',
         timeNote: 'MRT Sam Yot 正對面',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Mega+Plaza+Saphan+Lek+Bangkok'
       },
@@ -1219,7 +1232,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#0d9488',
         tag: '夜巡狂飆 (Klook 必訂・餐食全包)',
         price: 'Klook 套裝人均約 NT$ 1,400-1,800 (含專屬改裝嘟嘟車、導遊與全餐食)',
-        desc: '19:00 於 MRT Sam Yot 站 1 號出口集合（就在 Mega Plaza 對面）！三人包一台敞篷嘟嘟車，VIP 免排隊吃遍【乃鴻炒河粉】、【鬼門 Pad Thai 蛋包河粉】與【胡椒豬肚湯】，夜訪無人臥佛寺震撼夜景。',
+        desc: '19:00 於 MRT Sam Yot 站 1 號出口集合（就在 Mega Plaza 對面）！三人包一台敞篷嘟嘟車，VIP 免排隊吃遍【乃鴻炒河粉】、【鬼門 Pad Thai 蛋包河粉】與【胡椒豬肚湯】，夜訪無人臥佛寺震撼夜景。下午沒吃大餐，現在戰力 100%！',
         timeNote: '19:00 MRT Sam Yot 集合',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=MRT+Sam+Yot+Bangkok',
         klook: 'https://www.klook.com/zh-TW/search/result/?query=%E6%9B%BC%E8%B0%B7%20%E5%98%9F%E5%98%9F%E8%BB%8A%20%E7%BE%8E%E9%A3%9F'
@@ -1233,7 +1246,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         color: '#ca8a04',
         tag: '曼谷天花板甜點',
         price: '三色斑蘭芒果糯米飯 官方實價 150 泰銖/盒',
-        desc: '曼谷公認第一名的三色天然果香（斑蘭/蝶豆花/原味）芒果糯米飯。香濃鹹甜純椰奶配脆綠豆仁與整顆熟芒，退房前散步 3 分鐘外帶去機場！',
+        desc: '曼谷公認第一名的三色天然果香（斑蘭/蝶豆花/原味）芒果糯米飯。香濃鹹甜純椰奶配脆綠豆仁與整顆熟芒，退房前散步 3 分鐘外帶去機場！\n⚠️ 海關提醒：新鮮芒果不能帶進台灣，濃椰奶醬超過液體限制隨身安檢會被攔，建議買 1-2 盒三人抵達機場前或報到時分食完畢！',
         timeNote: '日航步行 3 分鐘',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Mae+Varee+Mango+Sticky+Rice'
       }
@@ -1242,34 +1255,34 @@ svg.leaflet-image-layer.leaflet-interactive path {
     // 2. DAILY ROUTES DEFINITION WITH FULL TRANSIT CONNECTORS
     const DAY_ROUTES = {
       'all': {
-        title: '📍 曼谷五日全域相對位置總覽 (官方菜單實價驗證版)',
+        title: '📍 曼谷五日全域相對位置總覽 (現場實測壓力優化版)',
         date: '全覽視野',
-        desc: '清楚呈現東側蘇凡納布機場、核心通羅日航酒店、西側吞武里運河大佛與嵩越路/噠叻仔老街、中央四面佛與班塔通路宵夜街、北方恰圖恰與紅樓！',
+        desc: '清楚呈現東側蘇凡納布機場、核心通羅日航酒店、西側吞武里運河大佛與嵩越路/噠叻仔老街、中央四面佛/Google辦公室與班塔通路宵夜街、北方恰圖恰與紅樓！',
         color: '#2563eb',
-        stops: ['bkk', 'nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong', 'chatuchak', 'herehai', 'tone', 'emsphere', 'songwat', 'megaplaza', 'tuktuk', 'lockerroom'],
+        stops: ['bkk', 'nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong', 'chatuchak', 'herehai', 'tone', 'google', 'emsphere', 'songwat', 'megaplaza', 'tuktuk', 'lockerroom'],
         path: null,
         notes: [
           { time: '核心基地', title: '🏨 曼谷日航酒店 (Hotel Nikko Bangkok)', loc: 'nikko', text: '座落 BTS Thong Lo 站旁，2 樓直通 Let\'s Relax 按摩，出門即達 T-One 46F 高空吧與 Find The Locker Room 密室酒吧。' },
-          { time: 'Day 1 (五)', title: '💆 Klook 專車接機 ➔ Let\'s Relax 按摩 2hr ➔ 通羅宵夜 ➔ 亞洲50大密室酒吧', loc: 'lockerroom', text: '週五晚尖峰專車直達飯店，19:30 先爽按 2 小時卸除疲勞，順路吃通羅 70 年老字號雲吞麵墊肚子，22:15 進 Find The Locker Room 微醺！' },
-          { time: 'Day 2 (六)', title: '🙏 四面佛還願 ➔ 水門雞飯 ➔ Klook 長尾船水上大佛 ➔ 洪成公 ➔ 煙火 ➔ 班塔通路', loc: 'longtail', text: '預訂 Klook 私人長尾船免現場喊價，看 20 層樓高純金巨佛，下船順遊噠叻仔老街喝咖啡、看河畔煙火，再去大學生宵夜街。' },
-          { time: 'Day 3 (日)', title: '🛍️ 恰圖恰＋DD Mall 紅樓古董玩具城 ➔ Here Hai 爆量蟹肉飯 ➔ 二刷按摩 ➔ T-One 46F', loc: 'herehai', text: '早上逛恰圖恰與冷氣紅樓淘老玩具相機，下午回 Ekkamai 吃週日營業的 Here Hai 蟹肉炒飯，回飯店二刷按摩，晚上看百萬夜景（零折返跑！）。' },
-          { time: 'Day 4 (一)', title: '🎮 EMSPHERE (或 Google 辦公室) ➔ 嵩越路文青老街 ➔ Mega Plaza 秋葉原 ➔ 米其林嘟嘟車', loc: 'megaplaza', text: '下午走訪曼谷最潮河畔老街喝手沖、逛 6 層樓玩具相機城 Mega Plaza，19:00 下樓過馬路無縫銜接 MRT Sam Yot 嘟嘟車美食夜巡！' },
-          { time: 'Day 5 (二)', title: '🥭 日航頂級朝食 ➔ Mae Varee 芒果糯米飯 ➔ Klook 專車送機返台', loc: 'maevaree', text: '悠閒吃完日航天花板早餐，巷口外帶三色芒果糯米飯，09:30 專車直奔機場搭機。' }
+          { time: 'Day 1 (五)', title: '💆 Klook 專車接機 ➔ Let\'s Relax 按摩 2hr (20:00) ➔ 通羅宵夜 ➔ 亞洲50大密室酒吧 (已預約)', loc: 'lockerroom', text: '週五晚尖峰專車直達飯店（預留75-90分塞車緩衝），20:00 放鬆爽按 2 小時，順路吃通羅 70 年老字號雲吞麵或巷口宵夜，22:30 進 Find The Locker Room 微醺！' },
+          { time: 'Day 2 (六)', title: '🙏 四面佛還願 ➔ 水門雞飯 ➔ BTS 直達沙吞 ➔ Klook 長尾船水上大佛 ➔ 洪成公 ➔ 煙火 ➔ 班塔通路 (QueQ抽號)', loc: 'longtail', text: '水門搭 BTS 避開正午大塞車，私人長尾船看 20 層樓高純金巨佛，下船順遊噠叻仔老街喝咖啡、看大橋燈光煙火，搭捷運在 2 公里內用 QueQ App 先抽號免排隊！' },
+          { time: 'Day 3 (日)', title: '🛍️ 恰圖恰＋DD Mall 紅樓 ➔ 先回日航放戰利品 ➔ 16:00 Here Hai 第一輪 ➔ 二刷按摩 ➔ T-One 46F (帶實體護照)', loc: 'herehai', text: '逛完恰圖恰 14:00 先回日航吹冷氣放東西，15:40 輕鬆前往 Here Hai 排 16:00 下午場第一輪（完美避開午休！），回飯店二刷按摩，晚上帶實體護照登上 Tichuca 水母吧！' },
+          { time: 'Day 4 (一)', title: '🏢 Google 曼谷辦公室朝聖 ➔ EMSPHERE 潮流城 ➔ 嵩越路文青老街 ➔ 16:20 Mega Plaza 秋葉原 ➔ 米其林嘟嘟車', loc: 'megaplaza', text: '早上 BTS 直達 Phloen Chit 刷 badge 參觀 Google 辦公室，回程逛 EMSPHERE，下午老街喝手沖，16:20 提早進 Mega Plaza 避免店家拉鐵門，19:00 正對面無縫集合夜巡！' },
+          { time: 'Day 5 (二)', title: '🥭 日航頂級朝食 ➔ Mae Varee 芒果糯米飯 ➔ 09:30 Klook 專車送機返台', loc: 'maevaree', text: '悠閒吃完日航天花板早餐，巷口外帶三色芒果糯米飯（車上或登機前分食），09:30 專車直奔機場搭機。' }
         ]
       },
       1: {
-        title: 'Day 1 (11/13 五)：Klook 專車接機・Let\'s Relax 爽按兩小時・通羅宵夜與亞洲 50 大密室酒吧',
-        date: '2026/11/13 週五 (方案 B：先按 2 小時最舒爽)',
-        desc: '路線：蘇凡納布機場 (Klook 接機) ➔ 曼谷日航酒店 Check-in ➔ 2F Let\'s Relax 按摩 2 小時 (19:30–21:30) ➔ 通羅深夜食堂墊肚子 ➔ Find The Locker Room 密室酒吧',
+        title: 'Day 1 (11/13 五)：Klook 機場接機・20:00 緩衝放鬆按摩・通羅宵夜與亞洲 50 大密室酒吧',
+        date: '2026/11/13 週五 (入境塞車緩衝 ＆ 密室酒吧預約版)',
+        desc: '路線：蘇凡納布機場 (Klook 接機) ➔ 曼谷日航酒店 Check-in ➔ 2F Let\'s Relax 按摩 2 小時 (20:00–22:00) ➔ 通羅深夜食堂墊肚子 ➔ 22:30 Find The Locker Room 密室酒吧',
         color: '#f59e0b',
         stops: ['bkk', 'nikko', 'relax', 'thonglor_noodle', 'lockerroom'],
         path: ['bkk', 'nikko', 'thonglor_noodle', 'lockerroom', 'nikko'],
         notes: [
           {
-            time: '16:50 - 19:00',
-            title: '❶ 蘇凡納布機場 (BKK) ➔ Klook 專車直達日航酒店',
+            time: '16:50 - 19:20',
+            title: '❶ 蘇凡納布機場 (BKK) ➔ Klook 專車直達日航酒店 (預留塞車緩衝)',
             loc: 'bkk',
-            text: '16:50 班機降落，出關領完行李約 17:50 至 2 樓 3–4 號門內找 Klook 舉牌司機。週五下班尖峰車程約 60–75 分鐘，預計 19:00 抵達日航酒店 Check-in 放行李。',
+            text: '泰航 TG 633 表定 16:50 降落，出關領行李走到 2 樓 3–4 號門上車約 17:50。週五晚間 18:00–19:30 是曼谷全週最嚴重塞車尖峰（特別是下高速公路轉入 Sukhumvit / Thong Lo 路段），車程預估 75–90 分鐘，約 19:15–19:20 抵達日航酒店。',
             transitToNext: {
               mode: 'grab',
               badgeText: '🚐 Klook 預約機場專車 (SUV/MPV)',
@@ -1277,7 +1290,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
               toLoc: 'nikko',
               fromTitle: '蘇凡納布機場 2F 3-4號門',
               toTitle: '曼谷日航酒店大廳',
-              duration: '60–75 分鐘 (週五晚尖峰)',
+              duration: '75–90 分鐘 (週五尖峰緩衝)',
               cost: '約 NT$ 680–850 / 車 (已含高速過路費)',
               direction: '專人舉牌・免溝通直達通羅',
               instructions: '領完行李後於入境大廳 2 樓 3 號或 4 號門內尋找 Klook 舉牌人員，直接引導上休旅大車，走高速公路直達通羅日航酒店。',
@@ -1286,10 +1299,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
             }
           },
           {
-            time: '19:00 - 19:30',
-            title: '❷ 曼谷日航酒店 Check-in ＆ 進房放行李',
+            time: '19:20 - 20:00',
+            title: '❷ 曼谷日航酒店 Check-in ＆ 從容進房放行李',
             loc: 'nikko',
-            text: '辦理入住、進房放妥行李並洗把臉換上輕便服裝，準備下 2 樓享受兩小時完整按摩。',
+            text: '即使航班微幅誤點 20 分鐘也完全不慌！從容辦理入住、進房放置行李、洗把臉換上輕鬆便服，19:55 悠閒搭電梯下 2 樓。',
             transitToNext: {
               mode: 'walk',
               badgeText: '🛗 飯店電梯直達 2F',
@@ -1306,10 +1319,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
             }
           },
           {
-            time: '19:30 - 21:30',
-            title: '❸ 飯店 2 樓：Let\'s Relax 爽按 2 小時 (WhatsApp 預訂)',
+            time: '20:00 - 22:00',
+            title: '❸ 飯店 2 樓：Let\'s Relax 爽按 2 小時 (WhatsApp 預約 20:00)',
             loc: 'relax',
-            text: '前一週先用 WhatsApp 預約 19:30 或 20:00 時段！推薦「傳統泰式按摩 2hr (1,300銖)」或「泰式+草本熱敷 2hr (1,500銖)」，按完還有免費芒果糯米飯先墊胃！',
+            text: '改約 20:00–22:00 最從容！建議提前一週以 WhatsApp 預約。推薦「傳統泰式按摩 2hr (1,300銖)」或「泰式+草本熱敷 2hr (1,500銖)」，按完徹底消除飛行疲勞，還能吃附贈的芒果糯米飯墊胃！',
             transitToNext: {
               mode: 'walk',
               badgeText: '🚶 通羅散步覓食',
@@ -1320,19 +1333,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
               duration: '3 分鐘 (220m)',
               cost: '0 銖',
               direction: '出日航大門左轉或右轉巷口',
-              instructions: '按完摩全身舒暢！出日航大門往南 200m 可吃 70 年傳奇老店「Bamee Kon Sae Lee 自製雞蛋叉燒雲吞麵」，或沿通羅大道往北邊走邊吃深夜泰式熱炒/海南雞飯。',
+              instructions: '按完摩全身舒暢！出日航大門往南 200m 可吃 70 年傳奇老店「Bamee Kon Sae Lee 自製雞蛋叉燒雲吞麵」，若招牌脆皮燒肉售罄，巷口對面 Sukhumvit Soi 38 巷口有深夜泰式熱炒、豬腳飯與海南雞飯！',
               waypoints: [[13.7274, 100.5796], [13.7260, 100.5793], [13.7250, 100.5791]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7250,100.5791&travelmode=walking'
             }
           },
           {
-            time: '21:30 - 22:15',
-            title: '❹ 通羅街頭深夜食堂：叉燒雲吞麵 / 深夜海南雞飯墊肚子',
+            time: '22:00 - 22:30',
+            title: '❹ 通羅街頭深夜食堂：叉燒雲吞麵 / 深夜熱炒墊肚子',
             loc: 'thonglor_noodle',
-            text: '跳過 21:00 就關廚房的餐廳，輕鬆來碗道地泰式叉燒脆皮豬肉雞蛋麵（70-100銖）或媽媽麵，把胃容量留給接下來的世界級調酒！',
+            text: '22:00 按完摩出門，輕鬆來碗李家麵店招牌叉燒雲吞麵（70-100銖）或 Soi 38 深夜熱炒/海南雞飯，墊墊肚子準備進酒吧！',
             transitToNext: {
               mode: 'walk',
-              badgeText: '🚶 步行導航',
+              badgeText: '🚶 散步進酒吧',
               fromLoc: 'thonglor_noodle',
               toLoc: 'lockerroom',
               fromTitle: '通羅街頭食堂',
@@ -1340,16 +1353,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
               duration: '8 分鐘 (750m)',
               cost: '0 銖',
               direction: '沿通羅大道 (Soi 55) 往北至 10 巷',
-              instructions: '沿通羅大道 (Sukhumvit Soi 55) 往北直走，過通羅 10 巷口旁即見神祕走廊與一整排高中生鐵捲置物櫃暗門。',
+              instructions: '沿通羅大道往北直走至 10 巷口旁，預約好 22:30–22:45 直接推開置物櫃暗門入座！',
               waypoints: [[13.7250, 100.5791], [13.7272, 100.5794], [13.7305, 100.5812], [13.7328, 100.5826]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7250,100.5791&destination=13.7328,100.5826&travelmode=walking'
             }
           },
           {
-            time: '22:15 - 深夜',
-            title: '❺ Find The Locker Room：亞洲 50 大密室酒吧微醺',
+            time: '22:30 - 深夜',
+            title: '❺ Find The Locker Room：亞洲 50 大密室酒吧 (事前線上訂位)',
             loc: 'lockerroom',
-            text: '拉開置物櫃暗門進入密室！品嚐台日星泰冠軍調酒師聯手設計的 Past/Present/Future 特調（單杯含稅約 490–575 銖），店內亦有精緻下酒炸物小食。',
+            text: '店內座位不多，週五 22:00 後是滿座尖峰，事先以官方 IG (Nightify) 預訂 22:30 時段！推開鐵捲置物櫃暗門，品嚐亞洲 50 大 Past/Present/Future 特調（單杯含稅約 490–575 銖），悠閒享受微醺時光。',
             transitToNext: {
               mode: 'walk',
               badgeText: '🚶 微醺散步回房',
@@ -1375,27 +1388,27 @@ svg.leaflet-image-layer.leaflet-interactive path {
       },
       2: {
         title: 'Day 2 (11/14 六)：四面佛還願・Klook 長尾船水上大佛・洪成公咖啡・煙火・班塔通路宵夜',
-        date: '2026/11/14 週六 (水上秘境 ＆ 煙火宵夜日)',
-        desc: '路線：日航 ➔ 愛侶灣四面佛 ＆ 水門雞飯 ➔ Klook 私人長尾船 (吞武里運河＆水上巨佛) ➔ 噠叻仔洪成公咖啡 ➔ 紀念橋煙火 ➔ 班塔通路宵夜街',
+        date: '2026/11/14 週六 (避塞車捷運 ＆ QueQ 抽號排隊攻略)',
+        desc: '路線：日航 ➔ 愛侶灣四面佛 ＆ 水門雞飯 ➔ BTS直達沙吞碼頭 (避開正午水門大塞車) ➔ Klook 私人長尾船 (停靠 Si Phraya 老街碼頭) ➔ 噠叻仔洪成公咖啡 ➔ 紀念橋夕陽光雕煙火 ➔ MRT+QueQ線上抽號 班塔通路宵夜街',
         color: '#0ea5e9',
         stops: ['nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong'],
         path: ['nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong', 'nikko'],
         notes: [
           {
-            time: '09:00 - 09:40',
-            title: '❶ 曼谷日航酒店：奢華朝食後出發',
+            time: '08:40 - 09:30',
+            title: '❶ 曼谷日航酒店：奢華朝食後稍微提早出發',
             loc: 'nikko',
-            text: '享用日航天花板等級的日料朝食，出飯店步行 3 分鐘至 BTS Thong Lo 站搭車。',
+            text: '享用日航天花板等級的日料朝食，09:30 出飯店步行 3 分鐘至 BTS Thong Lo 站搭車，提早 20 分鐘出發讓後續行程更寬裕！',
             transitToNext: {
               mode: 'bts',
-              badgeText: '🚆 BTS 淺綠線 (5站)',
+              badgeText: '🚆 BTS 淺綠線 (5站直達)',
               fromLoc: 'nikko',
               toLoc: 'erawan',
               fromTitle: '曼谷日航酒店',
               toTitle: '愛侶灣四面佛',
               fromStation: { name: 'BTS Thong Lo (E6)', lat: 13.7242, lng: 100.5786, note: '3號入口進站' },
               toStation: { name: 'BTS Chit Lom (E1)', lat: 13.7441, lng: 100.5430, exit: '2號出口' },
-              duration: '20 分鐘 (含車程11分+進站步行)',
+              duration: '18 分鐘',
               cost: '35 銖/人',
               direction: '往 Khu Khot (N24) 方向',
               instructions: '• 上車：BTS Thong Lo (E6) 3號入口進站<br>• 月台方向：往 Khu Khot (N24) 方向<br>• 途經：5 站 (E6➔E5➔E4➔E3➔E2➔E1)<br>• 下車：BTS Chit Lom (E1)<br>• 出口：2 號出口接空橋步行 2 分鐘下樓即達四面佛',
@@ -1404,59 +1417,61 @@ svg.leaflet-image-layer.leaflet-interactive path {
             }
           },
           {
-            time: '10:00 - 12:40',
-            title: '❷ 愛侶灣四面佛虔誠還願 ＆ 紅大哥水門雞飯早午餐',
+            time: '09:50 - 12:20',
+            title: '❷ 愛侶灣四面佛虔誠還願 ＆ 水門雞飯早午餐',
             loc: 'erawan',
-            text: '向四面佛稟報還願，現場預約官方還願舞團獻舞（260-710銖）。隨後沿空橋步行 8 分鐘（650m）至米其林必比登「紅大哥水門雞飯」吃海南雞飯配苦瓜排骨湯（一盤 60-100 銖）。',
+            text: '向四面佛稟報還願，現場預約官方還願舞團獻舞（260-710銖）。隨後沿空橋步行至米其林必比登「紅大哥水門雞飯」吃海南雞飯配苦瓜排骨湯（亦可至 CentralWorld 3F 紅大哥分店吹冷氣吃）。12:20 前吃完準備前往碼頭！',
             transitToNext: {
-              mode: 'grab',
-              badgeText: '🚕 Grab 直達包船碼頭 (或 BTS)',
+              mode: 'bts',
+              badgeText: '🚆 BTS 雙鐵直達碼頭 (切勿在水門叫車！)',
               fromLoc: 'erawan',
               toLoc: 'longtail',
-              fromTitle: '四面佛 / 水門雞飯',
-              toTitle: '河畔指定包船碼頭',
-              duration: '20–25 分鐘 (約 5.5km)',
-              cost: 'Grab 約 130–160 銖/車',
-              direction: '依 Klook 憑證前往 Sathorn 或 Si Phraya 碼頭',
-              instructions: '• Grab 方案：吃完水門雞飯直接叫 Grab 吹冷氣前往 Klook 憑證指定的集合碼頭（通常為 River City 旁 Si Phraya Pier N3 或 BTS Saphan Taksin 旁沙吞碼頭）。<br>• BTS 防塞備案：Chit Lom 站搭至 Siam 轉深綠線至 S6 Saphan Taksin 站 2 號出口即達碼頭（約 18 分鐘）。',
-              waypoints: [[13.7443, 100.5404], [13.7350, 100.5300], [13.7290, 100.5200], [13.7285, 100.5135]],
-              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7443,100.5404&destination=13.7285,100.5135&travelmode=driving'
+              fromTitle: '水門雞飯 / Chit Lom',
+              toTitle: '沙吞碼頭 (Sathorn Pier)',
+              fromStation: { name: 'BTS Chit Lom (E1) / Siam (CEN)', lat: 13.7441, lng: 100.5430 },
+              toStation: { name: 'BTS Saphan Taksin (S6 沙吞碼頭)', lat: 13.7188, lng: 100.5140, exit: '2號出口直通碼頭' },
+              duration: '18 分鐘 (零塞車保證)',
+              cost: 'BTS 40 銖/人',
+              direction: 'Siam 轉深綠線往 Bang Wa 方向',
+              instructions: '⚠️ 切勿週六正午在水門市場門口叫 Grab，周邊是著名塞車黑洞，叫車恐塞 45 分鐘以上！<br>✅ 正確做法：從 CentralWorld 空橋步行 5 分鐘回【BTS Chit Lom (E1)】搭 1 站至 Siam ➔ 同月台對面轉乘深綠線往 Bang Wa 方向 5 站至【BTS Saphan Taksin (S6)】2 號出口，下樓即達沙吞碼頭 (Sathorn Pier)，18 分鐘準時抵達！',
+              waypoints: [[13.7443, 100.5404], [13.7456, 100.5342], [13.7380, 100.5310], [13.7280, 100.5280], [13.7188, 100.5140]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7443,100.5404&destination=13.7188,100.5140&travelmode=transit'
             }
           },
           {
-            time: '13:15 - 15:15',
-            title: '❸ Klook 私人長尾船：吞武里百年運河 ＆ 20層樓水上巨佛',
+            time: '13:00 - 15:00',
+            title: '❸ Klook 私人長尾船：吞武里百年運河 ＆ 水門寺純金巨佛',
             loc: 'longtail',
-            text: '事先在 Klook/KKday 訂好私人長尾船，現場報名字直接上船免喊價！穿梭曼谷市中心西岸的吞武里水上人家、老水閘門與野生水巨蜥，水道轉角震撼仰望 69 公尺高純金「水門寺大佛」！',
+            text: '事先在 Klook/KKday 訂好私人長尾船，現場報名字直接上船免喊價！穿梭曼谷市中心西岸的吞武里水上人家、老水閘門與野生水巨蜥，水道轉角震撼仰望 69 公尺高純金「水門寺大佛」！<br>⚠️ 登船提醒：開船前請向船長交代回程直接停靠「Si Phraya Pier (N3)」或海事局碼頭 (Marine Dept Pier)，免走回頭路！',
             transitToNext: {
               mode: 'boat',
-              badgeText: '🚤 長尾船返航 ➔ 散步進老街',
+              badgeText: '🚤 長尾船靠岸 ➔ 散步進老街',
               fromLoc: 'longtail',
               toLoc: 'talatnoi',
               fromTitle: '水上大佛運河區',
               toTitle: '噠叻仔洪成公咖啡',
-              fromStation: { name: '吞武里運河登船處', lat: 13.7285, lng: 100.5135 },
-              toStation: { name: 'Si Phraya (N3) / 海事局碼頭', lat: 13.7320, lng: 100.5138, exit: '步行5分進洪成公' },
-              duration: '下船後老街步行 5 分鐘 (350m)',
+              fromStation: { name: '吞武里運河遊覽', lat: 13.7225, lng: 100.4705 },
+              toStation: { name: 'Si Phraya (N3) / 海事局碼頭', lat: 13.7320, lng: 100.5138, exit: '步行4分進洪成公' },
+              duration: '下船後老街步行 4 分鐘 (350m)',
               cost: '已含於包船費用內',
               direction: '穿過噠叻仔老爺車零件牆直達',
-              instructions: '• 下船點：請船夫返程停靠在「Si Phraya Pier (N3 / River City)」或「Marine Dept Pier (海事局碼頭)」。<br>• 步行路線：下船後穿過噠叻仔最著名的「古董老爺車零件牆」與壁畫小巷，散步 4–5 分鐘（350m）即走進洪成公百年老宅！',
+              instructions: '• 下船點：請船夫返程停靠在「Si Phraya Pier (N3 / River City)」或「Marine Dept Pier (海事局碼頭)」。<br>• 步行路線：下船後穿過噠叻仔最著名的「古董老爺車零件牆」與壁畫小巷，散步 4 分鐘（350m）即走進洪成公百年老宅！',
               waypoints: [[13.7225, 100.4705], [13.7240, 100.4850], [13.7280, 100.5050], [13.7320, 100.5138], [13.7344, 100.5140]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7298,100.5132&destination=13.7344,100.5140&travelmode=walking'
             }
           },
           {
-            time: '15:20 - 17:20',
+            time: '15:10 - 17:30',
             title: '❹ 噠叻仔文青老街：洪成公百年老宅河景咖啡 (Hong Sieng Kong)',
             loc: 'talatnoi',
-            text: '走進兩百年古董倉庫改建的【洪成公】，在河畔大榕樹下點杯招牌柳橙美式咖啡（140-180銖）配胡蘿蔔蛋糕（160銖），吹河風聽現場音樂放空。',
+            text: '走進兩百年古董倉庫改建的【洪成公】，在河畔大榕樹下點杯招牌柳橙美式咖啡（140-180銖）配胡蘿蔔蛋糕（160銖），吹河風聽現場音樂放空。可在此吃點輕食先墊個肚子。',
             transitToNext: {
               mode: 'walk',
               badgeText: '🛺 嘟嘟車 / 河岸散步',
               fromLoc: 'talatnoi',
               toLoc: 'fireworks',
               fromTitle: '噠叻仔老街 (洪成公)',
-              toTitle: '紀念橋天空公園 (煙火)',
+              toTitle: '紀念橋天空公園 (光雕/煙火)',
               duration: '嘟嘟車 6 分鐘 / 步行 18 分鐘 (1.4km)',
               cost: '嘟嘟車約 80–100 銖/車',
               direction: '沿昭披耶河向西北方向',
@@ -1466,32 +1481,32 @@ svg.leaflet-image-layer.leaflet-interactive path {
             }
           },
           {
-            time: '17:45 - 19:30',
-            title: '❺ 紀念橋天空公園：湄南河燈光節光雕與水上煙火',
+            time: '17:45 - 19:20',
+            title: '❺ 紀念橋天空公園：河畔夕陽 ＆ 19:00 第一場大橋 3D 光雕秀',
             loc: 'fireworks',
-            text: '漫步跨河天空公園，欣賞 Vijit Chao Phraya 3D 大橋光雕投影與週末夜間壓軸的璀璨河畔煙火秀！',
+            text: '漫步跨河天空公園步道，欣賞 Vijit Chao Phraya 湄南河夕陽與 19:00 第一場大橋 3D 光雕投影燈光秀！<br>💡 雙行程抉擇：推薦【方案A (以宵夜為主)】：19:15 看完大橋光雕後立即出發前往班塔通路吃大餐；若想看 20:45 週末限定壓軸大煙火（方案B），可在河畔多待至 21:00 再去班塔通路（Jeh O Chula 開至凌晨 24:00，宵夜熱度依舊）。',
             transitToNext: {
               mode: 'mrt',
-              badgeText: '🚇 MRT 藍線 (不塞車神招)',
+              badgeText: '🚇 MRT 藍線 (在車上打開 QueQ 抽號！)',
               fromLoc: 'fireworks',
               toLoc: 'banthatthong',
               fromTitle: '紀念橋 (MRT Sam Yot)',
               toTitle: '班塔通路宵夜街',
               fromStation: { name: 'MRT Sam Yot (BL30)', lat: 13.7471, lng: 100.5034, note: '步行 6 分鐘進站' },
-              toStation: { name: 'MRT Hua Lamphong (BL28)', lat: 13.7371, lng: 100.5173, exit: '3號出口' },
+              toStation: { name: 'MRT Hua Lamphong (BL28)', lat: 13.7371, lng: 100.5173, exit: '3號出口 (進入2km範圍立刻抽號)' },
               duration: '12–15 分鐘',
-              cost: 'MRT 19 銖/人 (或 Grab 100 銖/車)',
+              cost: 'MRT 19 銖/人 + 嘟嘟車 40 銖',
               direction: '往 Hua Lamphong 方向 (2站)',
-              instructions: '• MRT 不塞車神招：步行進 MRT Sam Yot (BL30 三耀站) ➔ 往 Hua Lamphong 方向搭 2 站（4分鐘）➔ MRT Hua Lamphong (BL28) 3 號出口轉嘟嘟車 3 分鐘即達宵夜街！<br>• Grab 直達：往東僅 3.2km，定位 Jeh O Chula 或 Chula Soi 16。',
+              instructions: '• MRT 避塞車抽號密技：從紀念橋步行至 MRT Sam Yot (BL30) 搭 2 站至【MRT Hua Lamphong (BL28)】。當捷運進入華藍蓬站半徑 2 公里內，立刻打開【QueQ App】線上抽取 Jeh O Chula 號碼牌！<br>• 出 3 號出口轉搭嘟嘟車 3 分鐘直接切入班塔通路！',
               waypoints: [[13.7397, 100.4985], [13.7471, 100.5034], [13.7430, 100.5097], [13.7371, 100.5173], [13.7423, 100.5238]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7397,100.4985&destination=13.7423,100.5238&travelmode=transit'
             }
           },
           {
-            time: '19:45 - 22:30',
-            title: '❻ 班塔通路大學生宵夜街 (Ban That Thong)',
+            time: '19:40 - 22:30',
+            title: '❻ 班塔通路大學生宵夜街：Jeh O Chula ＆ Nueng Nom Nua',
             loc: 'banthatthong',
-            text: '直衝曼谷第一宵夜街！吃米其林 Jeh O Chula 海鮮媽媽麵鍋（300-850銖）、Nueng Nom Nua 鮮奶爆漿烤吐司（65-120銖）、泰式脆皮炸油條配斑蘭醬！',
+            text: '直衝曼谷第一宵夜街！吃米其林 Jeh O Chula 海鮮媽媽麵鍋（300-850銖，若排太久亦可在 Klook 先買快速通關）、Nueng Nom Nua 鮮奶炭烤吐司（內用若排太久直接改走外帶櫃檯 Takeaway 免排隊！）、泰式脆皮炸油條配斑蘭醬！',
             transitToNext: {
               mode: 'bts',
               badgeText: '🚆 BTS 淺綠線 / 🚕 Grab',
@@ -1504,7 +1519,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
               duration: '18 分鐘',
               cost: 'BTS 47 銖/人 / Grab 150 銖/車',
               direction: '往 Kheha (E23) 方向 (6站)',
-              instructions: '• BTS 方案：吃飽散步至北端 BTS National Stadium (W1) 或 BTS Siam (CEN) ➔ 搭淺綠線往 Kheha (E23) 方向（6站）➔ BTS Thong Lo (E6) 3 號出口回日航。<br>• Grab 方案：走拉瑪四路直達日航大門。',
+              instructions: '• BTS 方案：吃飽散步至北端 BTS National Stadium (W1) 或 BTS Siam (CEN) ➔ 搭淺綠線往 Kheha (E23) 方向（6站）➔ BTS Thong Lo (E6) 3 號出口回日航。<br>• Grab 方案：深夜走拉瑪四路直達日航大門。',
               waypoints: [[13.7423, 100.5238], [13.7456, 100.5342], [13.7441, 100.5430], [13.7431, 100.5489], [13.7401, 100.5552], [13.7370, 100.5604], [13.7303, 100.5698], [13.7242, 100.5786], [13.7272, 100.5794]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7423,100.5238&destination=13.7272,100.5794&travelmode=transit'
             }
@@ -1518,12 +1533,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
         ]
       },
       3: {
-        title: 'Day 3 (11/15 日)：恰圖恰＆紅樓古董玩具城・Here Hai 爆量蟹肉飯・二刷 Let\'s Relax・T-One 46F 高空吧',
-        date: '2026/11/15 週日 (零折返跑順暢動線！)',
-        desc: '路線：日航早餐 ➔ 恰圖恰市集 ＆ DD Mall 紅樓 (冷氣古董玩具古著城) ➔ 回程順吃 Here Hai 爆量蟹肉飯 (週日有開！) ➔ 日航泳池＆二刷 Let\'s Relax 按摩 ➔ T-One 46F 高空水母吧',
+        title: 'Day 3 (11/15 日)：恰圖恰＆紅樓古董玩具・回飯店放戰利品・16:00 Here Hai 避開午休・二刷按摩・T-One 46F 水母吧',
+        date: '2026/11/15 週日 (避開午休清場 ＆ 必帶實體護照版)',
+        desc: '路線：日航早餐 ➔ 恰圖恰市集 ＆ DD Mall 紅樓 (冷氣玩具古著) ➔ 14:00 先搭 BTS 回日航酒店放戰利品沖涼 ➔ 15:40 輕鬆前往排 16:00 Here Hai 下午第一輪 ➔ 日航泳池＆二刷 Let\'s Relax 按摩 ➔ 帶護照正本登上 T-One 46F 高空水母吧',
         color: '#2563eb',
         stops: ['nikko', 'chatuchak', 'herehai', 'relax', 'tone'],
-        path: ['nikko', 'chatuchak', 'herehai', 'nikko', 'tone', 'nikko'],
+        path: ['nikko', 'chatuchak', 'nikko', 'herehai', 'nikko', 'tone', 'nikko'],
         notes: [
           {
             time: '09:30 - 10:00',
@@ -1551,32 +1566,52 @@ svg.leaflet-image-layer.leaflet-interactive path {
             time: '10:15 - 14:00',
             title: '❷ 恰圖恰週末市集 ＋ DD Mall 紅樓 (冷氣古董玩具相機城)',
             loc: 'chatuchak',
-            text: '10:15 先逛戶外設計 T 恤、香氛與皮件；中午 12:00 變熱立刻走進正對面冷氣開放的【DD Mall 紅樓 (Bangsue Junction)】，1–5 樓滿滿古董老玩具、底片相機、黑膠唱片與美式古著，吹冷氣尋寶超爽！',
+            text: '10:15 先逛戶外設計 T 恤、香氛與皮件；中午 12:00 變熱立刻走進正對面冷氣開放的【DD Mall 紅樓 (Bangsue Junction)】，1–5 樓滿滿古董老玩具、底片相機、黑膠唱片與美式古著，吹冷氣尋寶超爽！<br>💡 避開午休聰明動線：Here Hai 下午 15:00–16:00 午休清場不收客。14:00 逛完不要拎著大包小包去排隊，先搭 BTS 直接回通羅日航酒店放戰利品、吹冷氣沖個澡！',
             transitToNext: {
               mode: 'bts',
-              badgeText: '🚆 BTS 淺綠線 (直達吃蟹肉飯)',
+              badgeText: '🚆 BTS 淺綠線 (回日航放戰利品)',
               fromLoc: 'chatuchak',
-              toLoc: 'herehai',
+              toLoc: 'nikko',
               fromTitle: 'BTS Mo Chit (N8)',
-              toTitle: 'Here Hai 蟹肉飯 (Ekkamai)',
+              toTitle: '曼谷日航酒店',
               fromStation: { name: 'BTS Mo Chit (N8)', lat: 13.8024, lng: 100.5537, note: '1號入口' },
-              toStation: { name: 'BTS Ekkamai (E7)', lat: 13.7190, lng: 100.5852, exit: '1號出口' },
-              duration: '33 分鐘 (15站)',
-              cost: '62 銖/人 (+計程車短駁 40 銖)',
+              toStation: { name: 'BTS Thong Lo (E6)', lat: 13.7242, lng: 100.5786, exit: '3號出口' },
+              duration: '28 分鐘',
+              cost: '62 銖/人',
               direction: '往 Kheha (E23) 方向',
-              instructions: '• 上車：BTS Mo Chit (N8 蒙奇站) 搭往 Kheha (E23) 方向<br>• 下車站：坐過通羅 1 站至 BTS Ekkamai (E7 伊卡邁站) 1 號出口<br>• 短駁：出站轉計程車/摩托車 3 分鐘進 Ekkamai Soi 10 即達 Here Hai（下午時段完美避開中午排隊人龍！）。',
-              waypoints: [[13.7999, 100.5502], [13.8024, 100.5537], [13.7750, 100.5420], [13.7456, 100.5342], [13.7370, 100.5604], [13.7242, 100.5786], [13.7190, 100.5852], [13.7297, 100.5855]],
-              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7999,100.5502&destination=13.7297,100.5855&travelmode=transit'
+              instructions: '• 上車：BTS Mo Chit (N8) 搭往 Kheha (E23) 方向（一車到底直達通羅）<br>• 下車：BTS Thong Lo (E6) 3 號出口步行 3 分鐘回日航酒店放戰利品、洗把臉、吹冷氣！',
+              waypoints: [[13.7999, 100.5502], [13.8024, 100.5537], [13.7750, 100.5420], [13.7456, 100.5342], [13.7370, 100.5604], [13.7242, 100.5786], [13.7272, 100.5794]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7999,100.5502&destination=13.7272,100.5794&travelmode=transit'
             }
           },
           {
-            time: '14:30 - 16:00',
-            title: '❸ Here Hai 喜愛海鮮：米其林必比登痛風蟹肉大餐 (週日營業！)',
-            loc: 'herehai',
-            text: '逛完市集飢腸轆轆，來吃整盤鋪滿金黃蟹肉的「爆量蟹肉炒飯 (3人中份 750銖)」＋「蒜蓉黑椒去殼皮皮蝦 (380-420銖)」＋「蟹肉歐姆蛋 (380銖)」，三人人均約 500 銖爽度破表！',
+            time: '14:30 - 15:40',
+            title: '❸ 回日航酒店放戰利品・吹冷氣梳洗充電',
+            loc: 'nikko',
+            text: '回房卸下恰圖恰戰利品，吹冷氣喝冰水放鬆，完全不用提著大包小包在炎熱街頭等位！15:40 輕鬆步出飯店或叫 Grab 前往 Here Hai 排下午場第一輪。',
             transitToNext: {
               mode: 'grab',
-              badgeText: '🚕 Grab 短駁回日航',
+              badgeText: '🚕 Grab / BTS 輕鬆前往',
+              fromLoc: 'nikko',
+              toLoc: 'herehai',
+              fromTitle: '曼谷日航酒店',
+              toTitle: 'Here Hai (Ekkamai 10巷)',
+              duration: '6 分鐘 (1.2km)',
+              cost: 'Grab 約 60–80 銖/車',
+              direction: '經通羅 10 巷穿至伊卡邁',
+              instructions: '從日航叫 Grab 僅 6 分鐘直達 Ekkamai Soi 10 巷口 Here Hai，或搭 BTS 僅 1 站至 Ekkamai 轉摩托車 3 分鐘。',
+              waypoints: [[13.7272, 100.5794], [13.7310, 100.5815], [13.7297, 100.5855]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7297,100.5855&travelmode=driving'
+            }
+          },
+          {
+            time: '16:00 - 17:15',
+            title: '❹ Here Hai 喜愛海鮮：16:00 下午場第一輪爽吃蟹肉大餐',
+            loc: 'herehai',
+            text: '15:50 抵達剛好排進 16:00 下午場第一輪！完美避開正中午烈日排隊，大啖整盤鋪滿金黃蟹肉的「爆量蟹肉炒飯 (3人中份 750銖)」＋「蒜蓉椒鹽去殼皮皮蝦 (380-420銖)」＋「蟹肉歐姆蛋 (380銖)」，爽度破表！吃完叫車 6 分鐘回日航。',
+            transitToNext: {
+              mode: 'grab',
+              badgeText: '🚕 Grab 6分鐘回日航按摩',
               fromLoc: 'herehai',
               toLoc: 'relax',
               fromTitle: 'Here Hai (Ekkamai 10巷)',
@@ -1584,19 +1619,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
               duration: '6 分鐘 (1.2km)',
               cost: 'Grab 約 60–80 銖/車',
               direction: '穿過通羅橫巷直達日航',
-              instructions: '從 Ekkamai 10 巷叫 Grab 穿過連通巷（Soi Thong Lo 10），僅 5–6 分鐘直接回到曼谷日航酒店大廳放戰利品！',
+              instructions: '吃飽後叫車僅 5–6 分鐘回到日航酒店，搭電梯直接上 2 樓 Let\'s Relax！',
               waypoints: [[13.7297, 100.5855], [13.7310, 100.5815], [13.7272, 100.5794]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7297,100.5855&destination=13.7272,100.5794&travelmode=driving'
             }
           },
           {
-            time: '16:30 - 20:30',
-            title: '❹ 回日航放戰利品・高空泳池放空 ＆ 二刷 Let\'s Relax 按摩',
+            time: '17:30 - 20:30',
+            title: '❺ 日航酒店二刷 Let\'s Relax 按摩 ＆ 高空泳池放空',
             loc: 'relax',
-            text: '免再北上折返跑！回房間放戰利品、去飯店泳池游泳午休，傍晚在日航 2 樓二刷 Let\'s Relax（可按足部 1hr 875銖、溫熱精油 1hr 1,600銖，或四手泰式 1,400銖），徹底回血！',
+            text: '吃飽回飯店 2 樓二刷 Let\'s Relax（可預約 17:30 或 18:00，按足部 1hr 875銖、溫熱精油 1hr 1,600銖，或四手泰式 1,400銖）。按完回房洗澡更衣，並【務必隨身攜帶實體護照正本】準備前往 Tichuca 水母高空吧！',
             transitToNext: {
               mode: 'walk',
-              badgeText: '🚶 散步 3 分鐘直達高空吧',
+              badgeText: '🚶 散步 3 分鐘 (務必帶實體護照！)',
               fromLoc: 'relax',
               toLoc: 'tone',
               fromTitle: '曼谷日航酒店',
@@ -1604,16 +1639,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
               duration: '3 分鐘 (250m)',
               cost: '0 銖',
               direction: '走 BTS Thong Lo 空橋直通 T-One',
-              instructions: '出日航大門往南走 200m 進 BTS Thong Lo 站空橋，走 4 號出口連通道直接進入 T-One 大樓搭乘電梯上 46 樓！',
+              instructions: '出日航大門往南走 200m 進 BTS Thong Lo 站空橋，走 4 號出口連通道直接進入 T-One 大樓搭乘電梯上 46 樓！⚠️ 請確認三人皆已帶「實體護照正本」，安檢不收照片！',
               waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7238, 100.5798]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7238,100.5798&travelmode=walking'
             }
           },
           {
             time: '21:00 - 深夜',
-            title: '❺ T-One 46F 高空酒吧 (Tichuca 水母吧)：百萬天際線夜景',
+            title: '❻ T-One 46F 高空酒吧 (Tichuca 水母吧)：阿凡達夜景微醺',
             loc: 'tone',
-            text: '在巨大發光水母天幕下俯瞰 360 度曼谷百萬夜景！每杯熱帶特調定價 400–600 銖（含稅實付約 470–650 銖，免門票低消一杯），喝完過馬路 3 分鐘即回日航睡覺。',
+            text: '在巨大發光水母天幕下俯瞰 360 度曼谷百萬夜景！每杯熱帶特調定價 400–600 銖（含稅實付約 470–650 銖，免門票低消一杯）。1 樓出示實體護照安檢後直達 46 樓，喝完散步 3 分鐘過馬路即回日航睡覺。',
             transitToNext: {
               mode: 'walk',
               badgeText: '🚶 散步回房',
@@ -1631,47 +1666,69 @@ svg.leaflet-image-layer.leaflet-interactive path {
           },
           {
             time: '深夜',
-            title: '❻ 返回曼谷日航酒店 舒適好眠',
+            title: '❼ 返回曼谷日航酒店 舒適好眠',
             loc: 'nikko',
             text: '悠閒散步回飯店休息，完全不塞車、不折返的完美週日！'
           }
         ]
       },
       4: {
-        title: 'Day 4 (11/16 一)：EMSPHERE 潮流城・嵩越路文青老街・Mega Plaza 秋葉原玩具城・米其林嘟嘟車夜巡',
-        date: '2026/11/16 週一 (三工程師街拍尋寶 ＆ 老城狂飆日)',
-        desc: '路線：日航 ➔ EMSPHERE 超跑潮牌 (或 Google 辦公室刷卡朝聖) ➔ 嵩越路 (Song Wat) 文青老街手沖咖啡 ➔ Mega Plaza 玩具相機城 ➔ 19:00 對面無縫集合：米其林嘟嘟車老城美食夜巡',
+        title: 'Day 4 (11/16 一)：Google 曼谷辦公室朝聖・EMSPHERE・嵩越路老街・Mega Plaza 提早尋寶・米其林嘟嘟車夜巡',
+        date: '2026/11/16 週一 (不走回頭路 ＆ 避開提早打烊版)',
+        desc: '路線：日航 ➔ 先搭 BTS 直達 Phloen Chit 刷 badge 參觀 Google 曼谷辦公室 ➔ 回程逛 EMSPHERE 吃輕食 ➔ BTS Asok 轉乘 MRT 藍線直奔老城 ➔ 嵩越路文青手沖 ➔ 16:20 提早進 Mega Plaza 秋葉原玩具城 ➔ 19:00 對面無縫集合米其林嘟嘟車夜巡',
         color: '#0d9488',
-        stops: ['nikko', 'emsphere', 'songwat', 'megaplaza', 'tuktuk'],
-        path: ['nikko', 'emsphere', 'songwat', 'megaplaza', 'tuktuk', 'nikko'],
+        stops: ['nikko', 'google', 'emsphere', 'songwat', 'megaplaza', 'tuktuk'],
+        path: ['nikko', 'google', 'emsphere', 'songwat', 'megaplaza', 'tuktuk', 'nikko'],
         notes: [
           {
-            time: '11:30 - 12:00',
-            title: '❶ 曼谷日航酒店：悠閒朝食後出發',
+            time: '10:30 - 11:00',
+            title: '❶ 曼谷日航酒店：悠閒早餐後出發 (順路直達 Google)',
             loc: 'nikko',
-            text: '睡到自然醒享用日航早餐，出門搭 BTS 淺綠線僅 1 站前往 EMSPHERE。',
+            text: '睡到自然醒享用日航早餐。順路最佳動線：從 BTS Thong Lo (E6) 直達 Phloen Chit (E2) 參觀 Google 辦公室，回程順向逛 EMSPHERE (E5) 再到 Asok (E4) 轉 MRT，完全不走回頭路！',
             transitToNext: {
               mode: 'bts',
-              badgeText: '🚆 BTS 淺綠線 (僅 1 站)',
+              badgeText: '🚆 BTS 淺綠線 (直達 Phloen Chit)',
               fromLoc: 'nikko',
-              toLoc: 'emsphere',
+              toLoc: 'google',
               fromTitle: '曼谷日航酒店',
-              toTitle: 'EMSPHERE 潮流城',
+              toTitle: 'Google 曼谷辦公室',
               fromStation: { name: 'BTS Thong Lo (E6)', lat: 13.7242, lng: 100.5786, note: '3號入口' },
-              toStation: { name: 'BTS Phrom Phong (E5)', lat: 13.7303, lng: 100.5698, exit: '6號出口空橋直通' },
-              duration: '2 分鐘 (1站)',
-              cost: '17 銖/人',
-              direction: '往 Khu Khot (N24) 方向 (僅1站)',
-              instructions: '• 上車：BTS Thong Lo (E6 通羅站)<br>• 月台方向：往 Khu Khot (N24) 方向（僅坐 1 站）<br>• 下車站：BTS Phrom Phong (E5 澎蓬站)<br>• 出口：6 號出口走空橋 (Skywalk) 直通 EMSPHERE 商場 2 樓',
-              waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7303, 100.5698], [13.7314, 100.5673]],
-              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7314,100.5673&travelmode=transit'
+              toStation: { name: 'BTS Phloen Chit (E2)', lat: 13.7431, lng: 100.5489, exit: '2號出口空橋直通' },
+              duration: '12 分鐘 (4站)',
+              cost: '32 銖/人',
+              direction: '往 Khu Khot (N24) 方向 (坐4站)',
+              instructions: '• 上車：BTS Thong Lo (E6 通羅站)<br>• 月台方向：往 Khu Khot (N24) 方向（搭乘 4 站）<br>• 下車站：BTS Phloen Chit (E2 奔集站)<br>• 出口：2 號出口走空橋直通 Park Ventures Ecoplex 頂級大樓',
+              waypoints: [[13.7272, 100.5794], [13.7242, 100.5786], [13.7303, 100.5698], [13.7370, 100.5604], [13.7401, 100.5552], [13.7431, 100.5489]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7272,100.5794&destination=13.7431,100.5489&travelmode=transit'
             }
           },
           {
-            time: '12:00 - 14:30',
-            title: '❷ EMSPHERE 潮流城 (💡 可選順路彩蛋：Google 曼谷辦公室)',
+            time: '11:00 - 12:15',
+            title: '❷ Google 曼谷辦公室朝聖 (Park Ventures 22F)',
+            loc: 'google',
+            text: 'Googler 刷員工證進入（同行非員工朋友請提前在內部系統登記 Guest badge 並帶實體護照換證）。參觀融入泰式嘟嘟車與傳統元素的特色辦公空間、俯瞰市中心綠景，在 Microkitchen 喝杯咖啡拍照！',
+            transitToNext: {
+              mode: 'bts',
+              badgeText: '🚆 BTS 淺綠線 (順向搭至澎蓬)',
+              fromLoc: 'google',
+              toLoc: 'emsphere',
+              fromTitle: 'BTS Phloen Chit (E2)',
+              toTitle: 'EMSPHERE 潮流城',
+              fromStation: { name: 'BTS Phloen Chit (E2)', lat: 13.7431, lng: 100.5489, note: '空橋進站' },
+              toStation: { name: 'BTS Phrom Phong (E5)', lat: 13.7303, lng: 100.5698, exit: '6號出口空橋直通' },
+              duration: '8 分鐘 (3站)',
+              cost: '28 銖/人',
+              direction: '往 Kheha (E23) 方向 (搭3站)',
+              instructions: '從 Park Ventures 走空橋進 BTS Phloen Chit (E2)，搭乘淺綠線往 Kheha 方向 3 站至 BTS Phrom Phong (E5) 6 號出口直通 EMSPHERE！',
+              waypoints: [[13.7431, 100.5489], [13.7401, 100.5552], [13.7370, 100.5604], [13.7303, 100.5698], [13.7314, 100.5673]],
+              gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7431,100.5489&destination=13.7314,100.5673&travelmode=transit'
+            }
+          },
+          {
+            time: '12:20 - 13:50',
+            title: '❸ EMSPHERE 潮流城：超跑概念館 ＆ 精品輕食甜點',
             loc: 'emsphere',
-            text: '逛 2F 超跑概念館與潮牌選品，G 樓吃點輕食（留肚子給晚上夜巡！）。💡 Googler 彩蛋：身為 Google 員工若想順路去曼谷辦公室，搭 BTS 往西 3 站至 Phloen Chit 站 2 號出口直通 Park Ventures 22F 刷 badge 參觀！',
+            text: '逛 2F 頂級超跑概念館（麥拉倫、保時捷、勞斯萊斯）與潮牌球鞋選品。中午在 G 樓簡單享用泰式輕食甜點即可（留肚子給晚上 19:00 嘟嘟車夜巡大餐！）。',
             transitToNext: {
               mode: 'bts_mrt',
               badgeText: '🚆 BTS 轉 🚇 MRT 藍線 (直達老街)',
@@ -1681,19 +1738,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
               toTitle: '嵩越路文青老街 (Song Wat)',
               fromStation: { name: 'BTS Phrom Phong (E5) / MRT Sukhumvit (BL22)', lat: 13.7378, lng: 100.5612 },
               toStation: { name: 'MRT Wat Mangkon (BL29 龍蓮寺站)', lat: 13.7430, lng: 100.5097, exit: '1號出口' },
-              duration: '25 分鐘 (雙鐵零塞車)',
+              duration: '22 分鐘 (雙鐵零塞車)',
               cost: 'BTS 17銖 + MRT 35銖',
               direction: 'Asok 轉 MRT 往 Tha Phra 方向',
-              instructions: '1. BTS Phrom Phong (E5) 搭 1 站至 BTS Asok (E4)<br>2. 站內走 3 號出口下樓轉乘 MRT Sukhumvit (BL22)<br>3. 搭 MRT 藍線往 Tha Phra (經 Hua Lamphong) 方向 7 站至【MRT Wat Mangkon (BL29 龍蓮寺站)】<br>4. 走 1 號出口穿過耀華力巷弄步行 6 分鐘即達河畔嵩越路！',
+              instructions: '1. BTS Phrom Phong (E5) 搭 1 站至 BTS Asok (E4)<br>2. 站內走 3 號出口下樓轉乘 MRT Sukhumvit (BL22)<br>3. 搭 MRT 藍線往 Tha Phra 方向 7 站至【MRT Wat Mangkon (BL29 龍蓮寺站)】<br>4. 走 1 號出口穿過耀華力巷弄步行 6 分鐘即達河畔嵩越路！',
               waypoints: [[13.7314, 100.5673], [13.7370, 100.5604], [13.7378, 100.5612], [13.7285, 100.5375], [13.7371, 100.5173], [13.7430, 100.5097], [13.7388, 100.5068]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7314,100.5673&destination=13.7388,100.5068&travelmode=transit'
             }
           },
           {
-            time: '15:00 - 17:00',
-            title: '❸ 嵩越路文青老街 (Song Wat Road)：百年倉庫精品烘豆 ＆ 街拍',
+            time: '14:15 - 16:15',
+            title: '❹ 嵩越路文青老街 (Song Wat Road)：百年倉庫精品手沖 ＆ 街拍',
             loc: 'songwat',
-            text: '三個工程師隨興走走拍拍首選！曼谷最夯河畔文青街區，造訪【SCR - Song Wat Coffee Roasters】喝杯極品 Dirty 或特調冷萃（120-180銖），逛設計選物店、拍復古街景與塗鴉牆。',
+            text: '時間提前半小時更從容！曼谷最夯河畔文青街區，造訪【SCR - Song Wat Coffee Roasters】喝杯極品 Dirty 或手沖單品（120-180銖），逛設計選物店、拍百年倉庫街景與塗鴉牆。享受完悠閒咖啡時光，16:15 散步前往 Mega Plaza！',
             transitToNext: {
               mode: 'walk',
               badgeText: '🚶 老城漫步 (或嘟嘟車 3 分鐘)',
@@ -1701,19 +1758,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
               toLoc: 'megaplaza',
               fromTitle: '嵩越路老街',
               toTitle: 'Mega Plaza 玩具相機城',
-              duration: '步行 10 分鐘 (750m)',
+              duration: '步行 8–10 分鐘 (750m)',
               cost: '0 銖 (嘟嘟車約 50 銖)',
               direction: '往北穿過老城街區直達',
-              instructions: '從嵩越路北端沿 Maha Chak 路或 Chakrawat 路往北散步 10 分鐘（750m），即抵達 MRT Sam Yot 站對面的 Mega Plaza 大樓！',
+              instructions: '從嵩越路北端沿 Maha Chak 路或 Chakrawat 路往北散步 8–10 分鐘（750m），直達 MRT Sam Yot 站對面的 Mega Plaza 大樓！',
               waypoints: [[13.7388, 100.5068], [13.7425, 100.5055], [13.7458, 100.5042]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7388,100.5068&destination=13.7458,100.5042&travelmode=walking'
             }
           },
           {
-            time: '17:00 - 18:50',
-            title: '❹ Mega Plaza Saphan Lek：泰國版秋葉原 (電玩・底片相機・模型公仔)',
+            time: '16:20 - 18:30',
+            title: '❺ Mega Plaza Saphan Lek：泰國版秋葉原 (提早進場避免收攤！)',
             loc: 'megaplaza',
-            text: '整棟 6 層樓冷氣開放的宅男工程師聖地！滿滿復古電玩、老底片相機與鏡頭、鋼彈模型、海賊王/七龍珠公仔與盒玩。重點是：它就在晚上嘟嘟車集合點 MRT Sam Yot 正對面！',
+            text: '整棟 6 層樓冷氣開放的工程師聖地！滿滿復古紅白機/PS老電玩、底片相機與鏡頭、鋼彈模型、海賊王/七龍珠公仔。⚠️ 關鍵細節：店家約在 18:00–18:30 就會陸續拉鐵門收攤，特排 16:20–18:30 享有完整 2 小時深度尋寶！18:30–18:50 在 1 樓買瓶水吹冷氣休息。',
             transitToNext: {
               mode: 'walk',
               badgeText: '🚶 下樓過馬路即達集合點',
@@ -1724,16 +1781,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
               duration: '2 分鐘 (120m)',
               cost: '0 銖',
               direction: '過馬路即達 1 號出口',
-              instructions: '18:50 逛完下樓，直接過馬路走到對面【MRT Sam Yot (BL30 三耀站) 1 號出口】與米其林嘟嘟車導遊會合，100% 零塞車風險！',
+              instructions: '18:50 步出商場大門，直接過馬路走到正對面【MRT Sam Yot (BL30 三耀站) 1 號出口】與米其林嘟嘟車導遊會合，100% 零塞車風險！',
               waypoints: [[13.7458, 100.5042], [13.7471, 100.5034]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7458,100.5042&destination=13.7471,100.5034&travelmode=walking'
             }
           },
           {
             time: '19:00 - 22:30',
-            title: '❺ 尊榮包車：米其林嘟嘟車老城美食夜巡 (餐食全包)',
+            title: '❻ 尊榮包車：米其林嘟嘟車老城美食夜巡 (餐食全包)',
             loc: 'tuktuk',
-            text: '下午沒亂塞大餐，現在戰力 100%！三人包一台專屬敞篷改裝嘟嘟車，VIP 免排隊吃遍【乃鴻炒河粉】、【鬼門 Pad Thai 蛋包河粉】、【唐人街胡椒豬肚湯】，夜訪無人臥佛寺震撼夜景！',
+            text: '下午只有喝咖啡吃輕食，現在戰力 100%！三人包一台專屬敞篷改裝嘟嘟車，VIP 免排隊吃遍【乃鴻炒河粉】、【鬼門 Pad Thai 蛋包河粉】、【唐人街胡椒豬肚湯】，夜訪無人臥佛寺震撼夜景！',
             transitToNext: {
               mode: 'grab',
               badgeText: '🚕 Grab 夜間快速道路直達',
@@ -1751,7 +1808,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           },
           {
             time: '23:00',
-            title: '❻ 返回曼谷日航酒店 收拾行李',
+            title: '❼ 返回曼谷日航酒店 收拾行李',
             loc: 'nikko',
             text: '夜巡大飽口福後回日航酒店打包行李，為明日返台做好準備。'
           }
@@ -1789,7 +1846,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             time: '09:10 - 09:30',
             title: '❷ 走路 3 分鐘外帶【Mae Varee】三色斑蘭芒果糯米飯',
             loc: 'maevaree',
-            text: '外帶曼谷公認第一名的三色斑蘭芒果糯米飯（官方實價一盒 150 泰銖），帶上專車或到機場解饞。',
+            text: '外帶曼谷公認第一名的三色斑蘭芒果糯米飯（官方實價一盒 150 泰銖）。⚠️ 注意：新鮮芒果不能帶進台灣海關，椰奶醬若超過液體限制隨身安檢會被攔，建議買 1–2 盒三人在前往機場的 Klook 專車上或機場報到前分食完畢！',
             transitToNext: {
               mode: 'grab',
               badgeText: '🚐 Klook 預約送機專車 (SUV/MPV)',
@@ -1938,7 +1995,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
               💰 ${loc.price}
             </span>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">${loc.desc}</p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3 whitespace-pre-line">${loc.desc}</p>
           <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
             <a href="${loc.gmaps}" target="_blank" class="btn-maps">
               📍 Google Maps 評價
