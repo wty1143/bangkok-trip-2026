@@ -999,14 +999,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     const LOCATIONS = {
       erawan: {
         id: 'erawan',
-        name: '愛侶灣四面佛 ＆ 水門雞飯 (CentralWorld店)',
+        name: '愛侶灣四面佛 ＆ CentralWorld (水門雞飯・Slip to Sleep睡衣)',
         lat: 13.7443,
         lng: 100.5404,
         icon: '🙏',
         color: '#f59e0b',
-        tag: '還願祈福 ＆ 冷氣店早午餐',
-        price: '四面佛供品 25-50 銖 / 還願舞 260-710 銖｜水門雞飯 65-100 銖/盤',
-        desc: '全泰國最負盛名的四面神（BTS Chit Lom 站 2 號出口空橋直達）。參拜還願後，走空橋直通對面 CentralWorld 3 樓「紅大哥水門雞飯」分店，吹冷氣舒適用餐，吃飽直接在商場連通道進 BTS 站。',
+        tag: '還願祈福・冷氣雞飯・5F買睡衣',
+        price: '四面佛還願舞 260-710 銖｜水門雞飯 65-100 銖｜Slip to Sleep 睡衣 690-1,290 銖',
+        desc: 'BTS Chit Lom 站 2 號出口空橋直達。參拜四面佛還願後，走空橋進對面 CentralWorld：先在 3 樓「紅大哥水門雞飯」吹冷氣吃午餐，餐後上 5 樓（Zone B 櫃位 K513）逛泰國爆紅【Slip to Sleep】荷包蛋早餐系列睡衣。12:55 離開商場搭捷運前往碼頭。',
         timeNote: 'BTS 直達 5 站',
         gmaps: 'https://www.google.com/maps/search/?api=1&query=Erawan+Shrine+Bangkok'
       },
@@ -1393,10 +1393,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
         path: ['nikko', 'erawan', 'longtail', 'talatnoi', 'fireworks', 'banthatthong', 'nikko'],
         notes: [
           {
-            time: '09:00 - 10:30',
-            title: '❶ 曼谷日航酒店：睡飽享用日式早餐後出發',
+            time: '08:45 - 10:00',
+            title: '❶ 曼谷日航酒店：享用日式早餐後出發',
             loc: 'nikko',
-            text: '悠閒睡飽並享用日航招牌日式早餐 Buffet，10:30 出飯店步行 3 分鐘至 BTS Thong Lo 站搭乘淺綠線。',
+            text: '悠閒享用日航招牌日式早餐 Buffet，10:00 出飯店步行 3 分鐘至 BTS Thong Lo 站搭乘淺綠線。',
             transitToNext: {
               mode: 'bts',
               badgeText: '🚆 BTS 淺綠線 (5站)',
@@ -1415,23 +1415,23 @@ svg.leaflet-image-layer.leaflet-interactive path {
             }
           },
           {
-            time: '10:45 - 13:10',
-            title: '❷ 愛侶灣四面佛還願 ＆ 水門雞飯 (CentralWorld 冷氣店)',
+            time: '10:20 - 12:55',
+            title: '❷ 四面佛還願 ➔ CentralWorld 3F 水門雞飯 ＆ 5F 買《Slip to Sleep》睡衣',
             loc: 'erawan',
-            text: '參拜四面佛與請舞團還願（260-710銖）。隨後走空橋進 CentralWorld 3 樓「紅大哥水門雞飯」分店吹冷氣吃海南雞飯配苦瓜排骨湯（65-100銖），餐後還能在百貨裡悠閒買杯泰奶逛逛。',
+            text: '10:20 參拜四面佛與請舞團還願（260-710銖）。11:00 走空橋進 CentralWorld 3 樓「紅大哥水門雞飯」吹冷氣吃午餐（剛開門免排隊），餐後上 5 樓（Zone B 櫃位 K513）選購泰國爆紅【Slip to Sleep】荷包蛋睡衣。⚠️ 請於 12:55 準時離開百貨搭捷運前往碼頭。',
             transitToNext: {
               mode: 'bts_mrt',
-              badgeText: '🚆 BTS 轉 🚇 MRT 藍線 (避開塞車)',
+              badgeText: '🚆 BTS 轉 🚇 MRT 藍線 (預留40分鐘)',
               fromLoc: 'erawan',
               toLoc: 'longtail',
               fromTitle: 'CentralWorld (Chit Lom)',
-              toTitle: 'Elefin Coffee (MRT Sanam Chai)',
+              toTitle: '塔田碼頭 / Elefin Coffee (Sanam Chai)',
               fromStation: { name: 'BTS Chit Lom (E1) / MRT Sukhumvit (BL22)', lat: 13.7441, lng: 100.5430 },
               toStation: { name: 'MRT Sanam Chai (BL31)', lat: 13.7442, lng: 100.4945, exit: '1號出口步行3分鐘' },
-              duration: '28 分鐘',
+              duration: '35–40 分鐘 (含步行換乘)',
               cost: 'BTS 25銖 + MRT 38銖',
               direction: 'Asok 轉 MRT 藍線往 Tha Phra 方向',
-              instructions: '1. BTS Chit Lom (E1) 搭 3 站至 BTS Asok (E4)<br>2. 轉乘 MRT Sukhumvit (BL22) 搭藍線往 Tha Phra 方向至【MRT Sanam Chai (BL31)】<br>3. 1 號出口（博物館出口）右轉走至大馬路即達集合點【Elefin Coffee】（臥佛寺南側）。',
+              instructions: '1. 12:55 從 CentralWorld 走空橋至 BTS Chit Lom (E1) 搭 3 站至 BTS Asok (E4)<br>2. 轉乘 MRT Sukhumvit (BL22) 搭藍線往 Tha Phra 方向至【MRT Sanam Chai (BL31)】<br>3. 1 號出口右轉走 3 分鐘即達【塔田碼頭 (Tha Tien Pier) / Elefin Coffee】（13:40 抵達報到）。',
               waypoints: [[13.7443, 100.5404], [13.7370, 100.5604], [13.7285, 100.5375], [13.7371, 100.5173], [13.7442, 100.4945], [13.7442, 100.4916]],
               gmapsDir: 'https://www.google.com/maps/dir/?api=1&origin=13.7443,100.5404&destination=13.7442,100.4916&travelmode=transit'
             }
